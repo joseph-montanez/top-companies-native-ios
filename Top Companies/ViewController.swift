@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     var simpleTableIdentifier: String = "cell"
-    var shoppingList: [String] = ["Eggs", "Milk"]
+    var keywordList: [String] = []
     @IBOutlet var tableView: UITableView!
     @IBOutlet var loader: UIActivityIndicatorView!
     @IBOutlet weak var scoller: UIScrollView!
@@ -47,12 +47,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
-        return shoppingList.count
+        return keywordList.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: simpleTableIdentifier)
-        cell.textLabel.text = shoppingList[indexPath.row]
+        cell.textLabel.text = keywordList[indexPath.row]
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         return cell
     }
@@ -72,11 +72,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let jsonPayload = NSString(data: data, encoding: NSUTF8StringEncoding)
             println(jsonPayload)
             
-            self.shoppingList = []
+            self.keywordList = []
             if rows.count > 0 {
                 for row in rows {
                     let item = row as NSDictionary
-                    self.shoppingList.append(item["label"] as String)
+                    self.keywordList.append(item["label"] as String)
                 }
             }
             
