@@ -8,20 +8,42 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     var simpleTableIdentifier: String = "cell"
     var shoppingList: [String] = ["Eggs", "Milk"]
-                            
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var loader: UIActivityIndicatorView!
+    @IBOutlet weak var scoller: UIScrollView!
+    @IBOutlet weak var searchfield: UITextField!
+
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: simpleTableIdentifier)
+        //let tapRec = UITapGestureRecognizer(target: self, action: "tap")
+        //self.view.addGestureRecognizer(tapRec)
+        self.searchfield.delegate = self
+    }
+    
+    @IBAction func dismissKeyboardOnTap(sender: UITextField) {
+        self.view.endEditing(true)
     }
 
     @IBAction func onSearchEdit(sender: UITextField, forEvent event: UIEvent) {
         println("Edited \(sender.text)")
         if countElements(sender.text!) > 2 {
             getKeywords(sender.text)
+        } else {
+            self.tableView.hidden = true
+            self.loader.hidden = true
         }
+    }
+    
+    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+        textField.resignFirstResponder()
+        return false
     }
     
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
@@ -31,6 +53,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: simpleTableIdentifier)
         cell.textLabel.text = shoppingList[indexPath.row]
+        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         return cell
     }
     
@@ -42,19 +65,35 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let url = NSURL(string: "http://hawk2.comentum.com/topcompanies/app-api/related-keywords.php?term=\(value.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet()))")
         let request = NSURLRequest(URL: url)
         // TODO show loader
+        self.loader.hidden = false
         
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
+            let rows = self.parseJson(data)
             let jsonPayload = NSString(data: data, encoding: NSUTF8StringEncoding)
             println(jsonPayload)
-            // TODO hide loader
+            
+            self.shoppingList = []
+            if rows.count > 0 {
+                for row in rows {
+                    let item = row as NSDictionary
+                    self.shoppingList.append(item["label"] as String)
+                }
+            }
+            
+            self.loader.hidden = true
+            self.tableView.hidden = false
+            self.tableView.reloadData()
         }
+    }
+    
+    func parseJson(jsonData: NSData) -> NSArray {
+        var error: NSError?
+        let jsonDict = NSJSONSerialization.JSONObjectWithData(jsonData, options: nil, error: &error) as NSArray
+        return jsonDict
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
-

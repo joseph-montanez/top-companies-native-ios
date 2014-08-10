@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6205" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6198"/>
+        <capability name="Constraints with attributes relative to the layout margin" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,32 +17,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SearchLogo" translatesAutoresizingMaskIntoConstraints="NO" id="kAL-DU-hG6">
-                                <rect key="frame" x="64" y="20" width="192" height="91"/>
-                            </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Keyword" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="LMa-f7-EWz">
-                                <rect key="frame" x="60" y="150" width="200" height="30"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4aJ-9a-h3O" userLabel="seachPadding">
+                                <rect key="frame" x="16" y="119" width="288" height="30"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Keyword" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="LMa-f7-EWz" userLabel="searchField">
+                                        <rect key="frame" x="6" y="0.0" width="275" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                        <connections>
+                                            <action selector="onSearchEdit:forEvent:" destination="BYZ-38-t0r" eventType="editingChanged" id="VBc-Ic-roM"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
-                                <connections>
-                                    <action selector="onSearchEdit:forEvent:" destination="BYZ-38-t0r" eventType="editingChanged" id="VBc-Ic-roM"/>
-                                </connections>
-                            </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="FIg-nl-Z8w">
-                                <rect key="frame" x="16" y="188" width="288" height="380"/>
+                            </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="PXX-UX-DbB">
+                                <rect key="frame" x="150" y="160" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="56" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="FIg-nl-Z8w">
+                                <rect key="frame" x="16" y="160" width="288" height="410"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="ycs-gO-iMs"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="9QQ-JO-phs"/>
                                 </connections>
                             </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="SearchLogo" translatesAutoresizingMaskIntoConstraints="NO" id="kAL-DU-hG6">
+                                <rect key="frame" x="64" y="20" width="192" height="91"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="91" id="TJb-WC-wC1"/>
+                                    <constraint firstAttribute="width" constant="192" id="vdc-1d-rmb"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="4aJ-9a-h3O" firstAttribute="top" secondItem="kAL-DU-hG6" secondAttribute="bottom" constant="20" id="bbA-cT-xxn"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="FIg-nl-Z8w" secondAttribute="bottom" id="mS1-WO-LFk"/>
+                            <constraint firstItem="FIg-nl-Z8w" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="160" id="onT-HT-aMW"/>
+                        </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
+                    <connections>
+                        <outlet property="loader" destination="PXX-UX-DbB" id="VHy-2G-6yO"/>
+                        <outlet property="searchfield" destination="LMa-f7-EWz" id="9Ix-Sr-RoK"/>
+                        <outlet property="tableView" destination="FIg-nl-Z8w" id="GWu-Dp-0HH"/>
+                        <outlet property="view" destination="8bC-Xf-vdC" id="dK8-wt-poM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
