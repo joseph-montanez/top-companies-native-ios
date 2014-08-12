@@ -8,23 +8,32 @@
 
 import UIKit
 
+class KeywordTableViewCell : UITableViewCell {
+    @IBOutlet var titleLabel: UILabel!
+    
+    func loadItem(#title: String) {
+        titleLabel.text = title
+    }
+}
+
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
-    var simpleTableIdentifier: String = "cell"
+    var simpleTableIdentifier: String = "keywordCell"
     var keywordList: [String] = []
     @IBOutlet var tableView: UITableView!
     @IBOutlet var loader: UIActivityIndicatorView!
     @IBOutlet weak var scoller: UIScrollView!
     @IBOutlet weak var searchfield: UITextField!
-
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: simpleTableIdentifier)
         //let tapRec = UITapGestureRecognizer(target: self, action: "tap")
         //self.view.addGestureRecognizer(tapRec)
         self.searchfield.delegate = self
+        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: simpleTableIdentifier)
+        var nib = UINib(nibName: "KeywordTableViewCell", bundle: nil)
+        self.tableView.registerNib(nib, forCellReuseIdentifier: "keywordCell")
     }
     
     @IBAction func dismissKeyboardOnTap(sender: UITextField) {
@@ -50,10 +59,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return keywordList.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: simpleTableIdentifier)
-        cell.textLabel.text = keywordList[indexPath.row]
-        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+    func tableView(tableView2: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+        var cell = self.tableView.dequeueReusableCellWithIdentifier(simpleTableIdentifier) as UITableViewCell
+        var label: UILabel;
+        if cell == nil {
+            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: simpleTableIdentifier)
+        }
+        label = cell.contentView.viewWithTag(10) as UILabel;
+//        cell.textLabel.text = keywordList[indexPath.row]
+        label.text = keywordList[indexPath.row]
+
+        
+        //cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         return cell
     }
     

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4008555E1998B424007DDD7F /* KeywordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4008555D1998B424007DDD7F /* KeywordTableViewCell.xib */; };
 		408F12FE1995F76000A3177A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408F12FD1995F76000A3177A /* AppDelegate.swift */; };
 		408F13001995F76000A3177A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408F12FF1995F76000A3177A /* ViewController.swift */; };
 		408F13031995F76000A3177A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 408F13011995F76000A3177A /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4008555D1998B424007DDD7F /* KeywordTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeywordTableViewCell.xib; sourceTree = "<group>"; };
 		408F12F81995F76000A3177A /* Top Companies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Top Companies.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		408F12FC1995F76000A3177A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		408F12FD1995F76000A3177A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				408F13011995F76000A3177A /* Main.storyboard */,
 				408F13041995F76000A3177A /* Images.xcassets */,
 				408F12FB1995F76000A3177A /* Supporting Files */,
+				4008555D1998B424007DDD7F /* KeywordTableViewCell.xib */,
 			);
 			path = "Top Companies";
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 			files = (
 				408F13031995F76000A3177A /* Main.storyboard in Resources */,
 				408F13051995F76000A3177A /* Images.xcassets in Resources */,
+				4008555E1998B424007DDD7F /* KeywordTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +401,7 @@
 				408F13161995F76000A3177A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		408F13171995F76000A3177A /* Build configuration list for PBXNativeTarget "Top CompaniesTests" */ = {
 			isa = XCConfigurationList;
@@ -405,6 +410,7 @@
 				408F13191995F76000A3177A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
