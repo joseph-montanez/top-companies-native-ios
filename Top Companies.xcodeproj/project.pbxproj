@@ -9,10 +9,11 @@
 /* Begin PBXBuildFile section */
 		4008555E1998B424007DDD7F /* KeywordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4008555D1998B424007DDD7F /* KeywordTableViewCell.xib */; };
 		408F12FE1995F76000A3177A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408F12FD1995F76000A3177A /* AppDelegate.swift */; };
-		408F13001995F76000A3177A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408F12FF1995F76000A3177A /* ViewController.swift */; };
+		408F13001995F76000A3177A /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408F12FF1995F76000A3177A /* MainController.swift */; };
 		408F13031995F76000A3177A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 408F13011995F76000A3177A /* Main.storyboard */; };
 		408F13051995F76000A3177A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 408F13041995F76000A3177A /* Images.xcassets */; };
 		408F13111995F76000A3177A /* Top_CompaniesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408F13101995F76000A3177A /* Top_CompaniesTests.swift */; };
+		6C0566891A481C9800D3DB7B /* ListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0566881A481C9800D3DB7B /* ListController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,12 +31,13 @@
 		408F12F81995F76000A3177A /* Top Companies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Top Companies.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		408F12FC1995F76000A3177A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		408F12FD1995F76000A3177A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		408F12FF1995F76000A3177A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		408F12FF1995F76000A3177A /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		408F13021995F76000A3177A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		408F13041995F76000A3177A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		408F130A1995F76000A3177A /* Top CompaniesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Top CompaniesTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		408F130F1995F76000A3177A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		408F13101995F76000A3177A /* Top_CompaniesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Top_CompaniesTests.swift; sourceTree = "<group>"; };
+		6C0566881A481C9800D3DB7B /* ListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,11 +80,12 @@
 			isa = PBXGroup;
 			children = (
 				408F12FD1995F76000A3177A /* AppDelegate.swift */,
-				408F12FF1995F76000A3177A /* ViewController.swift */,
+				408F12FF1995F76000A3177A /* MainController.swift */,
 				408F13011995F76000A3177A /* Main.storyboard */,
 				408F13041995F76000A3177A /* Images.xcassets */,
 				408F12FB1995F76000A3177A /* Supporting Files */,
 				4008555D1998B424007DDD7F /* KeywordTableViewCell.xib */,
+				6C0566881A481C9800D3DB7B /* ListController.swift */,
 			);
 			path = "Top Companies";
 			sourceTree = "<group>";
@@ -161,6 +164,7 @@
 				TargetAttributes = {
 					408F12F71995F76000A3177A = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = DUD7P3535U;
 					};
 					408F13091995F76000A3177A = {
 						CreatedOnToolsVersion = 6.0;
@@ -212,8 +216,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				408F13001995F76000A3177A /* ViewController.swift in Sources */,
+				408F13001995F76000A3177A /* MainController.swift in Sources */,
 				408F12FE1995F76000A3177A /* AppDelegate.swift in Sources */,
+				6C0566891A481C9800D3DB7B /* ListController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,7 +336,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Top Companies/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -342,7 +349,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Top Companies/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

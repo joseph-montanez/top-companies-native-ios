@@ -16,7 +16,7 @@ class KeywordTableViewCell : UITableViewCell {
     }
 }
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class MainController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     var simpleTableIdentifier: String = "keywordCell"
     var keywordList: [String] = []
     @IBOutlet var tableView: UITableView!
@@ -55,16 +55,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return false
     }
     
-    func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return keywordList.count
     }
     
-    func tableView(tableView2: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    func tableView(tableView2: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = self.tableView.dequeueReusableCellWithIdentifier(simpleTableIdentifier) as UITableViewCell
         var label: UILabel;
-        if cell == nil {
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: simpleTableIdentifier)
-        }
+//        if cell == nil {
+//            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: simpleTableIdentifier)
+//        }
         label = cell.contentView.viewWithTag(10) as UILabel;
 //        cell.textLabel.text = keywordList[indexPath.row]
         label.text = keywordList[indexPath.row]
@@ -74,32 +74,41 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
+    func getStoryBoard() -> UIStoryboard {
+        return self.storyboard!
+    }
+    
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+        let listController = getStoryBoard().instantiateViewControllerWithIdentifier("ListController") as ListController
+        //self.navigationController?.showViewController(listController, sender: <#AnyObject!#>)
+        self.presentViewController(listController, animated: true, completion: nil)
         println("Selected row! - \(indexPath.row)")
     }
     
     func getKeywords(value: NSString) {
-        let url = NSURL(string: "http://hawk2.comentum.com/topcompanies/app-api/related-keywords.php?term=\(value.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet()))")
-        let request = NSURLRequest(URL: url)
-        // TODO show loader
-        self.loader.hidden = false
-        
-        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
-            let rows = self.parseJson(data)
-            let jsonPayload = NSString(data: data, encoding: NSUTF8StringEncoding)
-            println(jsonPayload)
+        let term = value.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())!
+        if let url = NSURL(string: "http://hawk2.comentum.com/topcompanies/app-api/related-keywords.php?term=\(term)") {
+            let request = NSURLRequest(URL: url)
+            // TODO show loader
+            self.loader.hidden = false
             
-            self.keywordList = []
-            if rows.count > 0 {
-                for row in rows {
-                    let item = row as NSDictionary
-                    self.keywordList.append(item["label"] as String)
+            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
+                let rows = self.parseJson(data)
+                let jsonPayload = NSString(data: data, encoding: NSUTF8StringEncoding)
+                println(jsonPayload)
+                
+                self.keywordList = []
+                if rows.count > 0 {
+                    for row in rows {
+                        let item = row as NSDictionary
+                        self.keywordList.append(item["label"] as String)
+                    }
                 }
+                
+                self.loader.hidden = true
+                self.tableView.hidden = false
+                self.tableView.reloadData()
             }
-            
-            self.loader.hidden = true
-            self.tableView.hidden = false
-            self.tableView.reloadData()
         }
     }
     
