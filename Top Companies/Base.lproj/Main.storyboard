@@ -6,22 +6,22 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Main Controller-->
+        <!--Top Companies-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainController" customModule="Top_Companies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Top Companies" id="BYZ-38-t0r" customClass="MainController" customModule="Top_Companies" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4aJ-9a-h3O" userLabel="seachPadding">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4aJ-9a-h3O" userLabel="seachPadding">
                                 <rect key="frame" x="16" y="119" width="288" height="30"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Keyword" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="LMa-f7-EWz" userLabel="searchField">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Keyword" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="LMa-f7-EWz" userLabel="searchField">
                                         <rect key="frame" x="6" y="0.0" width="275" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
@@ -34,6 +34,8 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="LMa-f7-EWz" secondAttribute="trailing" constant="7" id="Sj0-Z8-G7T"/>
+                                    <constraint firstItem="LMa-f7-EWz" firstAttribute="leading" secondItem="4aJ-9a-h3O" secondAttribute="leading" constant="7" id="fmg-mc-XCV"/>
                                     <constraint firstAttribute="height" constant="30" id="saa-Sg-J7x"/>
                                 </constraints>
                             </view>
@@ -65,8 +67,11 @@
                             <constraint firstItem="4aJ-9a-h3O" firstAttribute="top" secondItem="kAL-DU-hG6" secondAttribute="bottom" constant="20" id="bbA-cT-xxn"/>
                             <constraint firstItem="FIg-nl-Z8w" firstAttribute="top" secondItem="4aJ-9a-h3O" secondAttribute="bottom" constant="11" id="dhr-R3-xjs"/>
                             <constraint firstAttribute="bottomMargin" secondItem="FIg-nl-Z8w" secondAttribute="bottom" id="mS1-WO-LFk"/>
+                            <constraint firstAttribute="centerX" secondItem="4aJ-9a-h3O" secondAttribute="centerX" id="qoZ-aB-5pt"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Top Companies" id="3hE-3C-E3T"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
                     <connections>
@@ -78,11 +83,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1134" y="307"/>
         </scene>
         <!--ListController-->
         <scene sceneID="9YH-JI-LDl">
             <objects>
-                <viewController id="c49-WA-CDm" userLabel="ListController" customClass="ListController" customModule="Top_Companies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ListController" id="c49-WA-CDm" userLabel="ListController" customClass="ListController" customModule="Top_Companies" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EMP-ga-i1N"/>
                         <viewControllerLayoutGuide type="bottom" id="ofB-MQ-tc3"/>
@@ -90,15 +96,29 @@
                     <view key="view" contentMode="scaleToFill" id="NIn-DN-JAF">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="SearchLogo" translatesAutoresizingMaskIntoConstraints="NO" id="4xy-bE-RtB">
+                                <rect key="frame" x="204" y="40" width="192" height="91"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="192" id="Z4K-K7-ZEM"/>
+                                    <constraint firstAttribute="height" constant="91" id="wka-Te-AD6"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="4xy-bE-RtB" secondAttribute="centerX" id="MMS-dv-JXI"/>
+                            <constraint firstItem="4xy-bE-RtB" firstAttribute="top" secondItem="NIn-DN-JAF" secondAttribute="topMargin" constant="20" id="YYl-Im-VCF"/>
+                        </constraints>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="view" destination="NIn-DN-JAF" id="Raf-ys-kOt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pDK-YV-jcF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="811" y="331"/>
+            <point key="canvasLocation" x="1640" y="323"/>
         </scene>
     </scenes>
     <resources>

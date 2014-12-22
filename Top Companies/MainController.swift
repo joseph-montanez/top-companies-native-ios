@@ -19,6 +19,7 @@ class KeywordTableViewCell : UITableViewCell {
 class MainController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     var simpleTableIdentifier: String = "keywordCell"
     var keywordList: [String] = []
+    var results: NSArray = []
     @IBOutlet var tableView: UITableView!
     @IBOutlet var loader: UIActivityIndicatorView!
     @IBOutlet weak var scoller: UIScrollView!
@@ -79,10 +80,26 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
-        let listController = getStoryBoard().instantiateViewControllerWithIdentifier("ListController") as ListController
-        //self.navigationController?.showViewController(listController, sender: <#AnyObject!#>)
-        self.presentViewController(listController, animated: true, completion: nil)
         println("Selected row! - \(indexPath.row)")
+        
+        let item = self.results[indexPath.row] as NSDictionary
+        let value = item["value"] as String
+        let parts = value.componentsSeparatedByString("_")
+        if (parts.count == 2) {
+            let valueType = parts[0]
+            
+            if (valueType == "company") {
+                // TODO:
+                let companyId = parts[1]
+                // Go to company detail view
+            } else {
+                let categoryId = parts[1]
+                let listController = getStoryBoard().instantiateViewControllerWithIdentifier("ListController") as ListController
+                listController.categoryId = categoryId
+                self.presentViewController(listController, animated: true, completion: nil)
+            }
+            
+        }
     }
     
     func getKeywords(value: NSString) {
@@ -93,13 +110,13 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.loader.hidden = false
             
             NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
-                let rows = self.parseJson(data)
+                self.results = self.parseJson(data)
                 let jsonPayload = NSString(data: data, encoding: NSUTF8StringEncoding)
                 println(jsonPayload)
                 
                 self.keywordList = []
-                if rows.count > 0 {
-                    for row in rows {
+                if self.results.count > 0 {
+                    for row in self.results {
                         let item = row as NSDictionary
                         self.keywordList.append(item["label"] as String)
                     }

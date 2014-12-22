@@ -9,10 +9,11 @@
 import UIKit
 
 class ListController : UIViewController {
+    var categoryId : String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        println("Loaded!")
+        println("Loaded! with category \(categoryId)")
     }
     
     override func didReceiveMemoryWarning() {
