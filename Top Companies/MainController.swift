@@ -93,31 +93,18 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func getKeywords(value: NSString) {
-        let term = value.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())!
-        if let url = NSURL(string: "http://hawk2.comentum.com/topcompanies/app-api/related-keywords.php?term=\(term)") {
-            let request = NSURLRequest(URL: url)
-            // TODO show loader
-            self.loader.hidden = false
-            
-            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
-                let results = self.parseJson(data)
-                let jsonPayload = NSString(data: data, encoding: NSUTF8StringEncoding)
-                println(jsonPayload)
-                
-                self.results = []
-                if results.count > 0 {
-                    for row in results {
-                        let dict = row as NSDictionary
-                        if let item = TPSearchItem(label: dict["label"] as String, value: dict["value"] as String) {
-                            self.results.append(item)
-                        }
-                    }
-                }
-                
-                self.loader.hidden = true
-                self.tableView.hidden = false
-                self.tableView.reloadData()
-            }
+        //-- Show loading
+        self.loader.hidden = false
+        
+        let search = Api().search(value)
+        search.onFailure { error in
+            self.loader.hidden = true
+        }
+        search.onSuccess { results in
+            self.results = results
+            self.loader.hidden = true
+            self.tableView.hidden = false
+            self.tableView.reloadData()
         }
     }
     
