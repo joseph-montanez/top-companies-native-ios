@@ -108,12 +108,6 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    func parseJson(jsonData: NSData) -> NSArray {
-        var error: NSError?
-        let jsonDict = NSJSONSerialization.JSONObjectWithData(jsonData, options: nil, error: &error) as NSArray
-        return jsonDict
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
