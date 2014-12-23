@@ -18,8 +18,7 @@ class KeywordTableViewCell : UITableViewCell {
 
 class MainController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     var simpleTableIdentifier: String = "keywordCell"
-    var keywordList: [String] = []
-    var results: NSArray = []
+    var results: [TPSearchItem] = []
     @IBOutlet var tableView: UITableView!
     @IBOutlet var loader: UIActivityIndicatorView!
     @IBOutlet weak var scoller: UIScrollView!
@@ -57,7 +56,7 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return keywordList.count
+        return results.count
     }
     
     func tableView(tableView2: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -68,7 +67,7 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //        }
         label = cell.contentView.viewWithTag(10) as UILabel;
 //        cell.textLabel.text = keywordList[indexPath.row]
-        label.text = keywordList[indexPath.row]
+        label.text = results[indexPath.row].name
 
         
         //cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
@@ -82,23 +81,14 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         println("Selected row! - \(indexPath.row)")
         
-        let item = self.results[indexPath.row] as NSDictionary
-        let value = item["value"] as String
-        let parts = value.componentsSeparatedByString("_")
-        if (parts.count == 2) {
-            let valueType = parts[0]
-            
-            if (valueType == "company") {
-                // TODO:
-                let companyId = parts[1]
-                // Go to company detail view
-            } else {
-                let categoryId = parts[1]
-                let listController = getStoryBoard().instantiateViewControllerWithIdentifier("ListController") as ListController
-                listController.categoryId = categoryId
-                self.presentViewController(listController, animated: true, completion: nil)
-            }
-            
+        let item = self.results[indexPath.row]
+        switch item.type {
+        case .Category:
+            let listController = getStoryBoard().instantiateViewControllerWithIdentifier("ListController") as ListController
+            listController.categoryId = item.id
+            self.presentViewController(listController, animated: true, completion: nil)
+        case .Company:
+            println("TODO: implement go to company")
         }
     }
     
@@ -110,15 +100,17 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.loader.hidden = false
             
             NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
-                self.results = self.parseJson(data)
+                let results = self.parseJson(data)
                 let jsonPayload = NSString(data: data, encoding: NSUTF8StringEncoding)
                 println(jsonPayload)
                 
-                self.keywordList = []
-                if self.results.count > 0 {
-                    for row in self.results {
-                        let item = row as NSDictionary
-                        self.keywordList.append(item["label"] as String)
+                self.results = []
+                if results.count > 0 {
+                    for row in results {
+                        let dict = row as NSDictionary
+                        if let item = TPSearchItem(label: dict["label"] as String, value: dict["value"] as String) {
+                            self.results.append(item)
+                        }
                     }
                 }
                 
