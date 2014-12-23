@@ -96,19 +96,68 @@
                     <view key="view" contentMode="scaleToFill" id="NIn-DN-JAF">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <userGuides>
+                            <userLayoutGuide location="300" affinity="minY"/>
+                            <userLayoutGuide location="300" affinity="minY"/>
+                        </userGuides>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="SearchLogo" translatesAutoresizingMaskIntoConstraints="NO" id="4xy-bE-RtB">
-                                <rect key="frame" x="204" y="40" width="192" height="91"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KzV-D5-cF2" userLabel="Heading">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="87"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HorizontalLogo" translatesAutoresizingMaskIntoConstraints="NO" id="4xy-bE-RtB">
+                                        <rect key="frame" x="207" y="32" width="187" height="38"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="187" id="Z4K-K7-ZEM"/>
+                                            <constraint firstAttribute="height" constant="38" id="wka-Te-AD6"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Back Arrow" translatesAutoresizingMaskIntoConstraints="NO" id="J6d-iH-zOt">
+                                        <rect key="frame" x="167" y="35" width="32" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="51s-Zi-X1x"/>
+                                            <constraint firstAttribute="width" constant="32" id="a7i-Q1-Ry6"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="192" id="Z4K-K7-ZEM"/>
-                                    <constraint firstAttribute="height" constant="91" id="wka-Te-AD6"/>
+                                    <constraint firstAttribute="height" constant="87" id="2o3-VT-1OR"/>
+                                    <constraint firstItem="4xy-bE-RtB" firstAttribute="leading" secondItem="J6d-iH-zOt" secondAttribute="trailing" constant="8" id="FzJ-RC-ETF"/>
+                                    <constraint firstAttribute="centerX" secondItem="4xy-bE-RtB" secondAttribute="centerX" id="N1L-WR-aAT"/>
+                                    <constraint firstItem="4xy-bE-RtB" firstAttribute="top" secondItem="KzV-D5-cF2" secondAttribute="top" constant="32" id="aUh-4f-dze"/>
+                                    <constraint firstItem="J6d-iH-zOt" firstAttribute="top" secondItem="KzV-D5-cF2" secondAttribute="top" constant="35" id="yfD-71-nJg"/>
                                 </constraints>
-                            </imageView>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yrm-jL-aGY" userLabel="Sub Heading">
+                                <rect key="frame" x="0.0" y="87" width="600" height="48"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Web Design - Corporate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yjx-oS-Qc6">
+                                        <rect key="frame" x="165" y="0.0" width="270" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="SYY-58-TU7"/>
+                                            <constraint firstAttribute="width" constant="270" id="qoc-Od-quh"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.61568627450980395" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="9QO-I9-V2D"/>
+                                    <constraint firstAttribute="centerX" secondItem="yjx-oS-Qc6" secondAttribute="centerX" id="Nba-cd-c13"/>
+                                    <constraint firstItem="yjx-oS-Qc6" firstAttribute="top" secondItem="Yrm-jL-aGY" secondAttribute="top" id="YrL-MW-vTu"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="4xy-bE-RtB" secondAttribute="centerX" id="MMS-dv-JXI"/>
-                            <constraint firstItem="4xy-bE-RtB" firstAttribute="top" secondItem="NIn-DN-JAF" secondAttribute="topMargin" constant="20" id="YYl-Im-VCF"/>
+                            <constraint firstAttribute="trailing" secondItem="Yrm-jL-aGY" secondAttribute="trailing" id="7Da-y3-NVu"/>
+                            <constraint firstItem="Yrm-jL-aGY" firstAttribute="top" secondItem="KzV-D5-cF2" secondAttribute="bottom" id="GSP-6g-QJQ"/>
+                            <constraint firstItem="KzV-D5-cF2" firstAttribute="top" secondItem="NIn-DN-JAF" secondAttribute="top" id="GWh-XG-ULF"/>
+                            <constraint firstItem="KzV-D5-cF2" firstAttribute="leading" secondItem="NIn-DN-JAF" secondAttribute="leading" id="JAy-o3-9yk"/>
+                            <constraint firstAttribute="trailing" secondItem="KzV-D5-cF2" secondAttribute="trailing" id="tJl-0s-i3W"/>
+                            <constraint firstItem="Yrm-jL-aGY" firstAttribute="leading" secondItem="NIn-DN-JAF" secondAttribute="leading" id="tu3-YB-9XC"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
@@ -118,10 +167,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pDK-YV-jcF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1640" y="323"/>
+            <point key="canvasLocation" x="1640" y="342"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Back Arrow" width="32" height="32"/>
+        <image name="HorizontalLogo" width="187" height="38"/>
         <image name="SearchLogo" width="468" height="222"/>
     </resources>
 </document>
