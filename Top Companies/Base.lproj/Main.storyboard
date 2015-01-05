@@ -47,7 +47,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="ycs-gO-iMs"/>
+                                    <outlet property="dataSource" destination="8bC-Xf-vdC" id="KqR-ZV-wl2"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="9QQ-JO-phs"/>
                                 </connections>
                             </tableView>
@@ -155,13 +155,79 @@
                                     <constraint firstItem="yjx-oS-Qc6" firstAttribute="top" secondItem="Yrm-jL-aGY" secondAttribute="top" id="YrL-MW-vTu"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="152" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="XEe-i7-FMb">
+                                <rect key="frame" x="0.0" y="136" width="600" height="464"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="152" id="qTN-x9-cxY">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qTN-x9-cxY" id="j6R-np-hbq">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="488 Madison Ave., 4th Fl." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2MH-q5-FeV">
+                                                    <rect key="frame" x="8" y="46" width="584" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="New York, NY 10022" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iwk-gK-Mkz">
+                                                    <rect key="frame" x="8" y="68" width="584" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="http://www.angency.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cn-wk-HQU">
+                                                    <rect key="frame" x="8" y="93" width="584" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="(222) 358-2600" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYq-bG-eoE">
+                                                    <rect key="frame" x="8" y="118" width="584" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Agency.com LLC" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACR-cd-Qoa">
+                                                    <rect key="frame" x="8" y="14" width="584" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="2MH-q5-FeV" firstAttribute="leading" secondItem="j6R-np-hbq" secondAttribute="leadingMargin" id="0pk-DG-OYs"/>
+                                                <constraint firstItem="ACR-cd-Qoa" firstAttribute="trailing" secondItem="j6R-np-hbq" secondAttribute="trailingMargin" id="4I3-BG-LyS"/>
+                                                <constraint firstItem="bYq-bG-eoE" firstAttribute="trailing" secondItem="j6R-np-hbq" secondAttribute="trailingMargin" id="7Ht-oJ-B6A"/>
+                                                <constraint firstItem="1cn-wk-HQU" firstAttribute="leading" secondItem="j6R-np-hbq" secondAttribute="leadingMargin" id="C2U-fK-X6f"/>
+                                                <constraint firstItem="ACR-cd-Qoa" firstAttribute="top" secondItem="j6R-np-hbq" secondAttribute="topMargin" constant="3" id="Dh3-GB-zDa"/>
+                                                <constraint firstItem="2MH-q5-FeV" firstAttribute="trailing" secondItem="j6R-np-hbq" secondAttribute="trailingMargin" id="QXo-as-acZ"/>
+                                                <constraint firstItem="bYq-bG-eoE" firstAttribute="leading" secondItem="j6R-np-hbq" secondAttribute="leadingMargin" id="WW7-WD-Y5Y"/>
+                                                <constraint firstItem="1cn-wk-HQU" firstAttribute="trailing" secondItem="j6R-np-hbq" secondAttribute="trailingMargin" id="bfx-7D-DMn"/>
+                                                <constraint firstItem="2MH-q5-FeV" firstAttribute="top" secondItem="ACR-cd-Qoa" secondAttribute="bottom" constant="10" id="fvO-Vw-pc1"/>
+                                                <constraint firstItem="bYq-bG-eoE" firstAttribute="top" secondItem="1cn-wk-HQU" secondAttribute="bottom" constant="4" id="jVi-9x-hD6"/>
+                                                <constraint firstItem="1cn-wk-HQU" firstAttribute="top" secondItem="Iwk-gK-Mkz" secondAttribute="bottom" constant="4" id="jdE-pl-mmB"/>
+                                                <constraint firstItem="Iwk-gK-Mkz" firstAttribute="top" secondItem="2MH-q5-FeV" secondAttribute="bottom" constant="4" id="oZG-6A-NQ5"/>
+                                                <constraint firstItem="ACR-cd-Qoa" firstAttribute="leading" secondItem="j6R-np-hbq" secondAttribute="leadingMargin" id="orf-iC-ZvM"/>
+                                                <constraint firstItem="Iwk-gK-Mkz" firstAttribute="leading" secondItem="j6R-np-hbq" secondAttribute="leadingMargin" id="zBM-Em-OXc"/>
+                                                <constraint firstItem="Iwk-gK-Mkz" firstAttribute="trailing" secondItem="j6R-np-hbq" secondAttribute="trailingMargin" id="zLf-HF-Oql"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="ofB-MQ-tc3" firstAttribute="top" secondItem="XEe-i7-FMb" secondAttribute="bottom" id="0eu-el-Dsy"/>
+                            <constraint firstItem="XEe-i7-FMb" firstAttribute="leading" secondItem="NIn-DN-JAF" secondAttribute="leading" id="2p2-vm-gDp"/>
+                            <constraint firstAttribute="trailing" secondItem="XEe-i7-FMb" secondAttribute="trailing" id="4hW-6A-oji"/>
                             <constraint firstAttribute="trailing" secondItem="Yrm-jL-aGY" secondAttribute="trailing" id="7Da-y3-NVu"/>
                             <constraint firstItem="Yrm-jL-aGY" firstAttribute="top" secondItem="KzV-D5-cF2" secondAttribute="bottom" id="GSP-6g-QJQ"/>
                             <constraint firstItem="KzV-D5-cF2" firstAttribute="top" secondItem="NIn-DN-JAF" secondAttribute="top" id="GWh-XG-ULF"/>
                             <constraint firstItem="KzV-D5-cF2" firstAttribute="leading" secondItem="NIn-DN-JAF" secondAttribute="leading" id="JAy-o3-9yk"/>
+                            <constraint firstItem="XEe-i7-FMb" firstAttribute="top" secondItem="Yrm-jL-aGY" secondAttribute="bottom" constant="1" id="lFw-rh-yBT"/>
                             <constraint firstAttribute="trailing" secondItem="KzV-D5-cF2" secondAttribute="trailing" id="tJl-0s-i3W"/>
                             <constraint firstItem="Yrm-jL-aGY" firstAttribute="leading" secondItem="NIn-DN-JAF" secondAttribute="leading" id="tu3-YB-9XC"/>
                         </constraints>
@@ -173,7 +239,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pDK-YV-jcF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1640" y="342"/>
+            <point key="canvasLocation" x="1640" y="336"/>
         </scene>
     </scenes>
     <resources>
