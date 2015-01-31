@@ -8,16 +8,8 @@
 
 import UIKit
 
-class KeywordTableViewCell : UITableViewCell {
-    @IBOutlet var titleLabel: UILabel!
-    
-    func loadItem(#title: String) {
-        titleLabel.text = title
-    }
-}
-
 class MainController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
-    var simpleTableIdentifier: String = "keywordCell"
+    var simpleTableIdentifier: String = "SearchItemCell"
     var results: [TPSearchItem] = []
     @IBOutlet var tableView: UITableView!
     @IBOutlet var loader: UIActivityIndicatorView!
@@ -27,12 +19,6 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        //let tapRec = UITapGestureRecognizer(target: self, action: "tap")
-        //self.view.addGestureRecognizer(tapRec)
-        self.searchfield.delegate = self
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: simpleTableIdentifier)
-        var nib = UINib(nibName: "KeywordTableViewCell", bundle: nil)
-        self.tableView.registerNib(nib, forCellReuseIdentifier: "keywordCell")
     }
     
     @IBAction func unwindToSearch(segue: UIStoryboardSegue) {
@@ -63,18 +49,14 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(tableView2: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = self.tableView.dequeueReusableCellWithIdentifier(simpleTableIdentifier) as UITableViewCell
-        var label: UILabel;
-//        if cell == nil {
-//            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: simpleTableIdentifier)
-//        }
-        label = cell.contentView.viewWithTag(10) as UILabel;
-//        cell.textLabel.text = keywordList[indexPath.row]
-        label.text = results[indexPath.row].name
-
-        
-        //cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-        return cell
+        if let cell = self.tableView.dequeueReusableCellWithIdentifier(simpleTableIdentifier) as? KeywordTableViewCell {
+            cell.loadItem(title: results[indexPath.row].name)
+            return cell
+        } else {
+            let cell = KeywordTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: simpleTableIdentifier)
+            cell.loadItem(title: results[indexPath.row].name)
+            return cell
+        }
     }
     
     func getStoryBoard() -> UIStoryboard {

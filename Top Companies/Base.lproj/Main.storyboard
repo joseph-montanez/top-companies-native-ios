@@ -22,22 +22,23 @@
                                 <rect key="frame" x="60" y="131" width="200" height="30"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Keyword" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="LMa-f7-EWz" userLabel="searchField">
-                                        <rect key="frame" x="7" y="-131" width="186" height="20"/>
+                                        <rect key="frame" x="7" y="5" width="186" height="20"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
                                             <action selector="onSearchEdit:forEvent:" destination="BYZ-38-t0r" eventType="editingChanged" id="VBc-Ic-roM"/>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="dqD-vB-wb5"/>
                                         </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="LMa-f7-EWz" firstAttribute="top" secondItem="4aJ-9a-h3O" secondAttribute="top" constant="-131" id="InS-na-Lqb"/>
-                                    <constraint firstAttribute="trailing" secondItem="LMa-f7-EWz" secondAttribute="trailing" constant="7" id="Sj0-Z8-G7T"/>
+                                    <constraint firstAttribute="trailing" secondItem="LMa-f7-EWz" secondAttribute="trailing" constant="7" id="2HP-dx-3AO"/>
+                                    <constraint firstAttribute="centerY" secondItem="LMa-f7-EWz" secondAttribute="centerY" id="H4P-aT-IiI"/>
                                     <constraint firstAttribute="width" constant="200" id="YwR-kg-6eB"/>
-                                    <constraint firstItem="LMa-f7-EWz" firstAttribute="leading" secondItem="4aJ-9a-h3O" secondAttribute="leading" constant="7" id="fmg-mc-XCV"/>
+                                    <constraint firstItem="LMa-f7-EWz" firstAttribute="leading" secondItem="4aJ-9a-h3O" secondAttribute="leading" constant="7" id="pVT-iP-2j1"/>
                                     <constraint firstAttribute="height" constant="30" id="saa-Sg-J7x"/>
                                 </constraints>
                             </view>
@@ -48,9 +49,34 @@
                                 <rect key="frame" x="0.0" y="172" width="320" height="308"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SearchItemCell" id="gpE-jX-JdT" customClass="KeywordTableViewCell" customModule="Top_Companies" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gpE-jX-JdT" id="uGW-Tc-K4H">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Bf-QL-RSW">
+                                                    <rect key="frame" x="20" y="19" width="38" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="9Bf-QL-RSW" firstAttribute="leading" secondItem="uGW-Tc-K4H" secondAttribute="leading" constant="20" id="JN9-lF-5NZ"/>
+                                                <constraint firstAttribute="centerY" secondItem="9Bf-QL-RSW" secondAttribute="centerY" id="kCa-Fy-Ifj"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="titleLabel" destination="9Bf-QL-RSW" id="wBA-2y-IDQ"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="8bC-Xf-vdC" id="KqR-ZV-wl2"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="9QQ-JO-phs"/>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="BdU-Zt-OaH"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="7T3-Ws-7ig"/>
                                 </connections>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SearchLogo" translatesAutoresizingMaskIntoConstraints="NO" id="kAL-DU-hG6">
