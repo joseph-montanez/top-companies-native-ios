@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import PromiseKit
+import Dollar
 
 class Api {
     let endPoint = "http://hawk2.comentum.com/topcompanies/app-api"
@@ -17,44 +19,29 @@ class Api {
         return jsonDict
     }
     
-    func search(value: String) -> Future<[TPSearchItem]> {
-        let promise = Promise<[TPSearchItem]>()
-        
-        Queue.global.async {
-            let term = value.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())!
-            var results = [TPSearchItem]()
-            
-            let apiUrl = "\(self.endPoint)/related-keywords.php?term=\(term)"
-            println("calling: \(apiUrl)")
-            
-            if let url = NSURL(string: apiUrl) {
-                let request = NSURLRequest(URL: url)
-                
-                NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
-                    if (data != nil) {
-                        let jsonResults = self.parseJson(data)
-                        let jsonPayload = NSString(data: data, encoding: NSUTF8StringEncoding)
-                        println(jsonPayload)
-                        
-                        if jsonResults.count > 0 {
-                            for row in jsonResults {
-                                let dict = row as NSDictionary
-                                if let item = TPSearchItem(label: dict["label"] as String, value: dict["value"] as String) {
-                                    results.append(item)
-                                }
-                            }
-                        }
-                        
-                        promise.success(results)
+    func search(value: String) -> Promise<[TPSearchItem]> {
+        let searchEndPoint = "\(endPoint)/related-keywords.php"
+        let params = ["term":value];
+        let promise = Promise<[TPSearchItem]> { fulfiller, rejecter in
+            let request:Promise<NSArray> = NSURLConnection.GET(searchEndPoint, query: params)
+            request.then { (jsonResults:NSArray) -> Void in
+                let rows = jsonResults as [NSDictionary]
+                let items = $.reduce(rows, initial: [TPSearchItem]()) { (collection, dict) in
+                    if let item = TPSearchItem(label: dict["label"] as String, value: dict["value"] as String) {
+                        return collection + [item]
                     } else {
-                        promise.error(error)
+                        return collection
                     }
                 }
-            } else {
-                promise.error(NSError(domain: "Failed to apply term", code: 1, userInfo: nil))
+                fulfiller(items)
+            }
+            request.catch { (error:NSError) -> Void in
+                rejecter(error)
             }
         }
         
-        return promise.future
+        
+        
+        return promise
     }
 }

@@ -1,0 +1,13 @@
+PODS:
+  - Dollar (2.1.0)
+  - PromiseKit/Swift (1.2.2)
+
+DEPENDENCIES:
+  - Dollar
+  - PromiseKit/Swift
+
+SPEC CHECKSUMS:
+  Dollar: 9e9f96a3e037f3ba4278b0eae1095b110b55c238
+  PromiseKit: 812643bdf837142e98d4becfb2a69d8f35e5aa6b
+
+COCOAPODS: 0.36.0.beta.2

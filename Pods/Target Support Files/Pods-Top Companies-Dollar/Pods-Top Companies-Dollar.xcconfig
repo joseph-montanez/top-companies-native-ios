@@ -1,0 +1,1 @@
+PODS_TOP_COMPANIES_DOLLAR_OTHER_LDFLAGS = -framework "Foundation"

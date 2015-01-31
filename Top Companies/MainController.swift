@@ -21,7 +21,6 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var results: [TPSearchItem] = []
     @IBOutlet var tableView: UITableView!
     @IBOutlet var loader: UIActivityIndicatorView!
-    @IBOutlet weak var scoller: UIScrollView!
     @IBOutlet weak var searchfield: UITextField!
     
     
@@ -34,6 +33,10 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: simpleTableIdentifier)
         var nib = UINib(nibName: "KeywordTableViewCell", bundle: nil)
         self.tableView.registerNib(nib, forCellReuseIdentifier: "keywordCell")
+    }
+    
+    @IBAction func unwindToSearch(segue: UIStoryboardSegue) {
+        
     }
     
     @IBAction func dismissKeyboardOnTap(sender: UITextField) {
@@ -97,14 +100,14 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.loader.hidden = false
         
         let search = Api().search(value)
-        search.onFailure { error in
-            self.loader.hidden = true
-        }
-        search.onSuccess { results in
-            self.results = results
+        search.then { (items:[TPSearchItem]) -> Void in
+            self.results = items
             self.loader.hidden = true
             self.tableView.hidden = false
             self.tableView.reloadData()
+        }
+        search.catch { error in
+            self.loader.hidden = true
         }
     }
     

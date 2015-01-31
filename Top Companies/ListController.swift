@@ -9,7 +9,7 @@
 import UIKit
 
 class ListController : UIViewController, UITableViewDelegate, UITableViewDataSource {
-    var simpleTableIdentifier: String = "companyItemCell"
+    var simpleTableIdentifier: String = "CompanyItemCell"
     var categoryId : String = ""
     var results: [TPCompany] = []
     override func viewDidLoad() {
@@ -34,7 +34,7 @@ class ListController : UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(tableView2: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = self.tableView.dequeueReusableCellWithIdentifier(simpleTableIdentifier) as UITableViewCell
+        var cell = tableView2.dequeueReusableCellWithIdentifier(simpleTableIdentifier) as UITableViewCell
         var label: UILabel;
         //        if cell == nil {
         //            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: simpleTableIdentifier)
@@ -51,14 +51,14 @@ class ListController : UIViewController, UITableViewDelegate, UITableViewDataSou
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         println("Selected row! - \(indexPath.row)")
         
-        let item = self.results[indexPath.row]
-        switch item.type {
-        case .Category:
-            let listController = getStoryBoard().instantiateViewControllerWithIdentifier("ListController") as ListController
-            listController.categoryId = item.id
-            self.presentViewController(listController, animated: true, completion: nil)
-        case .Company:
-            println("TODO: implement go to company")
-        }
+//        let item = self.results[indexPath.row]
+//        switch item.type {
+//        case .Category:
+//            let listController = getStoryBoard().instantiateViewControllerWithIdentifier("ListController") as ListController
+//            listController.categoryId = item.id
+//            self.presentViewController(listController, animated: true, completion: nil)
+//        case .Company:
+//            println("TODO: implement go to company")
+//        }
     }
 }
