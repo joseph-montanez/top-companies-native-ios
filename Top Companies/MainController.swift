@@ -2,14 +2,15 @@
 //  ViewController.swift
 //  Top Companies
 //
-//  Created by minidev on 8/8/14.
-//  Copyright (c) 2014 minidev. All rights reserved.
+//  Created by Joseph Montanez on 8/8/14.
+//  Copyright (c) 2014 Comentum Corp. All rights reserved.
 //
 
 import UIKit
 
 class MainController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     var simpleTableIdentifier: String = "SearchItemCell"
+    var selectedIndex: Int = 0
     var results: [TPSearchItem] = []
     @IBOutlet var tableView: UITableView!
     @IBOutlet var loader: UIActivityIndicatorView!
@@ -50,13 +51,17 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(tableView2: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if let cell = self.tableView.dequeueReusableCellWithIdentifier(simpleTableIdentifier) as? KeywordTableViewCell {
-            cell.loadItem(title: results[indexPath.row].name)
-            return cell
+            return self.loadDataToCell(cell, item: results[indexPath.row])
         } else {
             let cell = KeywordTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: simpleTableIdentifier)
-            cell.loadItem(title: results[indexPath.row].name)
-            return cell
+            return self.loadDataToCell(cell, item: results[indexPath.row])
         }
+    }
+    
+    func loadDataToCell(cell: KeywordTableViewCell, item: TPSearchItem) -> KeywordTableViewCell {
+        cell.loadItem(title: item.name)
+        
+        return cell
     }
     
     func getStoryBoard() -> UIStoryboard {
@@ -69,9 +74,7 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let item = self.results[indexPath.row]
         switch item.type {
         case .Category:
-            let listController = getStoryBoard().instantiateViewControllerWithIdentifier("ListController") as ListController
-            listController.categoryId = item.id
-            self.presentViewController(listController, animated: true, completion: nil)
+            selectedIndex = indexPath.row
         case .Company:
             println("TODO: implement go to company")
         }
@@ -96,5 +99,14 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let name = segue.identifier
+        if (name == "showCategoryListing") {
+            let controller = segue.destinationViewController as ListController
+            controller.promise = Api().listing(results[selectedIndex].id)
+            controller.categoryId = results[selectedIndex].id.toInt()!
+        }
     }
 }

@@ -6,16 +6,16 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Top Companies-->
+        <!--Main Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Top Companies" id="BYZ-38-t0r" customClass="MainController" customModule="Top_Companies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainController" customModule="Top_Companies" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4aJ-9a-h3O" userLabel="seachPadding">
@@ -47,7 +47,6 @@
                             </activityIndicatorView>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="56" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="FIg-nl-Z8w">
                                 <rect key="frame" x="0.0" y="172" width="320" height="308"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SearchItemCell" id="gpE-jX-JdT" customClass="KeywordTableViewCell" customModule="Top_Companies" customModuleProvider="target">
@@ -69,8 +68,10 @@
                                                 <constraint firstAttribute="centerY" secondItem="9Bf-QL-RSW" secondAttribute="centerY" id="kCa-Fy-Ifj"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="titleLabel" destination="9Bf-QL-RSW" id="wBA-2y-IDQ"/>
+                                            <segue destination="c49-WA-CDm" kind="show" identifier="showCategoryListing" id="Pk2-P6-Yv8"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -87,7 +88,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="PXX-UX-DbB" firstAttribute="top" secondItem="4aJ-9a-h3O" secondAttribute="bottom" constant="11" id="4Q3-Nt-ifh"/>
                             <constraint firstAttribute="trailing" secondItem="FIg-nl-Z8w" secondAttribute="trailing" id="4eG-tv-KqS"/>
@@ -101,7 +102,7 @@
                             <constraint firstAttribute="centerX" secondItem="4aJ-9a-h3O" secondAttribute="centerX" id="qoZ-aB-5pt"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Top Companies" id="3hE-3C-E3T"/>
+                    <navigationItem key="navigationItem" id="3hE-3C-E3T"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
@@ -109,6 +110,7 @@
                         <outlet property="searchfield" destination="LMa-f7-EWz" id="9Ix-Sr-RoK"/>
                         <outlet property="tableView" destination="FIg-nl-Z8w" id="Kg1-rW-10Y"/>
                         <outlet property="view" destination="8bC-Xf-vdC" id="dK8-wt-poM"/>
+                        <segue destination="Zmu-Jg-KBF" kind="show" identifier="jumpToCompanyDetails" id="nwF-tF-k9b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -186,11 +188,12 @@
                                     <constraint firstItem="yjx-oS-Qc6" firstAttribute="top" secondItem="Yrm-jL-aGY" secondAttribute="top" id="YrL-MW-vTu"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="152" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="XEe-i7-FMb">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="152" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="XEe-i7-FMb">
                                 <rect key="frame" x="0.0" y="136" width="320" height="344"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CompanyItemCell" rowHeight="152" id="qTN-x9-cxY">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CompanyItemCell" rowHeight="152" id="qTN-x9-cxY" customClass="CompanyTableViewCell" customModule="Top_Companies">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qTN-x9-cxY" id="j6R-np-hbq">
@@ -245,8 +248,20 @@
                                                 <constraint firstItem="Iwk-gK-Mkz" firstAttribute="trailing" secondItem="j6R-np-hbq" secondAttribute="trailingMargin" id="zLf-HF-Oql"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="address" destination="2MH-q5-FeV" id="I9J-69-pn8"/>
+                                            <outlet property="cityStateZip" destination="Iwk-gK-Mkz" id="fAN-T2-OC4"/>
+                                            <outlet property="name" destination="ACR-cd-Qoa" id="umL-DP-s40"/>
+                                            <outlet property="phone" destination="bYq-bG-eoE" id="1us-p0-JGi"/>
+                                            <outlet property="website" destination="1cn-wk-HQU" id="gQH-YP-Cwx"/>
+                                            <segue destination="Zmu-Jg-KBF" kind="showDetail" identifier="showCompanyDetails" id="xh2-5i-Ojy"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="c49-WA-CDm" id="6Fe-xs-gnA"/>
+                                    <outlet property="delegate" destination="c49-WA-CDm" id="xlJ-e4-FKg"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -264,16 +279,35 @@
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="tableView" destination="XEe-i7-FMb" id="j4Y-Gg-KVU"/>
                         <outlet property="view" destination="NIn-DN-JAF" id="Raf-ys-kOt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pDK-YV-jcF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="qKz-Dv-hua" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1570" y="307"/>
+            <point key="canvasLocation" x="1570" y="665"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="tfb-ce-ROK">
+            <objects>
+                <viewController id="Zmu-Jg-KBF" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bKn-zt-psq"/>
+                        <viewControllerLayoutGuide type="bottom" id="R3u-V6-G7z"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ULe-JD-1Eb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pnM-iW-5iW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2004" y="307"/>
         </scene>
     </scenes>
     <resources>
@@ -281,4 +315,7 @@
         <image name="HorizontalLogo" width="187" height="38"/>
         <image name="SearchLogo" width="468" height="222"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="xh2-5i-Ojy"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  Top Companies
 //
-//  Created by minidev on 8/8/14.
-//  Copyright (c) 2014 minidev. All rights reserved.
+//  Created by Joseph Montanez on 8/8/14.
+//  Copyright (c) 2014 Comentum Corp. All rights reserved.
 //
 
 import UIKit
@@ -17,6 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         // Override point for customization after application launch.
         application.setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
+//        var navigationBarAppearace = UINavigationBar.appearance()
+//        
+//        navigationBarAppearace.tintColor = UIColor(rgba: "#FFFFFF")
+//        navigationBarAppearace.barTintColor = UIColor(rgba: "#034517")
         
         return true
     }

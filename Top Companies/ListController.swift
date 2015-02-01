@@ -2,20 +2,33 @@
 //  ListController.swift
 //  Top Companies
 //
-//  Created by Bernard Kohantob on 12/22/14.
-//  Copyright (c) 2014 minidev. All rights reserved.
+//  Created by Joseph Montanez on 12/22/14.
+//  Copyright (c) 2014 Comentum Corp. All rights reserved.
 //
 
 import UIKit
+import PromiseKit
 
 class ListController : UIViewController, UITableViewDelegate, UITableViewDataSource {
     var simpleTableIdentifier: String = "CompanyItemCell"
-    var categoryId : String = ""
+    var categoryId : Int = 0
+    var promise: Promise<[TPCompany]>?
     var results: [TPCompany] = []
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         println("Loaded! with category \(categoryId)")
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        promise?.then { (companies: [TPCompany]) -> Void in
+            println("Request finished")
+            self.results = companies
+            self.tableView.reloadData()
+        }
     }
     
     @IBAction func goBack(sender: UIButton) {
@@ -34,17 +47,21 @@ class ListController : UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(tableView2: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView2.dequeueReusableCellWithIdentifier(simpleTableIdentifier) as UITableViewCell
-        var label: UILabel;
-        //        if cell == nil {
-        //            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: simpleTableIdentifier)
-        //        }
-        label = cell.contentView.viewWithTag(10) as UILabel;
-        //        cell.textLabel.text = keywordList[indexPath.row]
-        label.text = results[indexPath.row].name
+        if let cell = self.tableView.dequeueReusableCellWithIdentifier(simpleTableIdentifier) as? CompanyTableViewCell {
+            return self.loadDataToCell(cell, company: results[indexPath.row])
+        } else {
+            let cell = CompanyTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: simpleTableIdentifier)
+            return self.loadDataToCell(cell, company: results[indexPath.row])
+        }
+    }
+    
+    func loadDataToCell(cell: CompanyTableViewCell, company: TPCompany) -> CompanyTableViewCell {
+        cell.name.text = company.name
+        cell.address.text = company.address
+        cell.cityStateZip.text = "\(company.city) \(company.city) \(company.zip)"
+        cell.website.text = company.website
+        cell.phone.text = company.phone
         
-        
-        //cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         return cell
     }
     
