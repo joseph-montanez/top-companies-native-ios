@@ -1,6 +1,0 @@
-[submodule "PromiseKit"]
-	path = PromiseKit
-	url = https://github.com/mxcl/PromiseKit.git
-[submodule "Dollar.swift"]
-	path = Dollar.swift
-	url = https://github.com/ankurp/Dollar.swift.git
