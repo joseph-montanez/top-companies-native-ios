@@ -15,5 +15,10 @@ class CompanyDetailTableViewController: UITableViewController {
 
     }
     
-    
+    //-- TODO: calculate height of each cell for dynamic text logic.
+//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        //-[NSString sizeWithFont:constrainedToSize:]
+//        //CompanyOverview
+//        return CGFloat(44.0)
+//    }
 }
