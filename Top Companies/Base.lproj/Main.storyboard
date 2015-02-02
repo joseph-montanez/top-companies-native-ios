@@ -154,7 +154,6 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="goBack:" destination="c49-WA-CDm" eventType="touchUpInside" id="AM5-SI-chy"/>
                                             <segue destination="qKz-Dv-hua" kind="unwind" unwindAction="unwindToSearch:" id="HIf-E5-o7d"/>
                                         </connections>
                                     </button>
