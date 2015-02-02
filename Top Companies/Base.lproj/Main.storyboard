@@ -309,17 +309,26 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SyI-Fp-ge3" id="MIh-IB-p5A">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="106387740" translatesAutoresizingMaskIntoConstraints="NO" id="HOf-Jj-Adi" userLabel="Banner Image">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="177273726" translatesAutoresizingMaskIntoConstraints="NO" id="HOf-Jj-Adi" userLabel="Banner Image">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="120" id="BnR-Jw-KKi"/>
                                                     </constraints>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fade" translatesAutoresizingMaskIntoConstraints="NO" id="d9l-tg-Ou7">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="HOf-Jj-Adi" secondAttribute="trailing" id="78y-H3-mgn"/>
                                                 <constraint firstItem="HOf-Jj-Adi" firstAttribute="leading" secondItem="MIh-IB-p5A" secondAttribute="leading" id="Ebu-XU-iZf"/>
+                                                <constraint firstItem="d9l-tg-Ou7" firstAttribute="leading" secondItem="MIh-IB-p5A" secondAttribute="leading" id="Iqd-cT-v39"/>
+                                                <constraint firstAttribute="bottom" secondItem="d9l-tg-Ou7" secondAttribute="bottom" id="O6V-Q3-s2t"/>
+                                                <constraint firstItem="d9l-tg-Ou7" firstAttribute="top" secondItem="MIh-IB-p5A" secondAttribute="top" id="PL7-tG-oig"/>
                                                 <constraint firstItem="HOf-Jj-Adi" firstAttribute="top" secondItem="MIh-IB-p5A" secondAttribute="top" id="QFY-t6-Wrl"/>
+                                                <constraint firstAttribute="trailing" secondItem="d9l-tg-Ou7" secondAttribute="trailing" id="hc0-Wc-jSj"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -387,14 +396,14 @@
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ZOl-P1-hmM">
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZOl-P1-hmM">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZOl-P1-hmM" id="8o7-g9-tRR">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="KW7-4R-2Rd">
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KW7-4R-2Rd">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KW7-4R-2Rd" id="LLu-Pu-tUD">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
@@ -408,6 +417,9 @@
                         </connections>
                     </tableView>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="bannerImage" destination="HOf-Jj-Adi" id="aYW-sa-dis"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BYQ-N4-Am5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -509,12 +521,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="106387740" width="320" height="213"/>
+        <image name="177273726" width="320" height="213"/>
         <image name="Back Arrow" width="32" height="32"/>
         <image name="HorizontalLogo" width="187" height="38"/>
         <image name="SearchLogo" width="468" height="222"/>
+        <image name="fade" width="320" height="120"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cPN-hL-V1i"/>
+        <segue reference="xh2-5i-Ojy"/>
     </inferredMetricsTieBreakers>
 </document>

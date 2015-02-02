@@ -9,5 +9,11 @@
 import UIKit
 
 class CompanyDetailTableViewController: UITableViewController {
+    @IBOutlet weak var bannerImage: UIImageView!
+    
+    override func viewDidLoad() {
 
+    }
+    
+    
 }
