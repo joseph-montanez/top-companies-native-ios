@@ -31,6 +31,10 @@ class ListController : UIViewController, UITableViewDelegate, UITableViewDataSou
         }
     }
     
+    @IBAction func unwindToList(segue: UIStoryboardSegue) {
+        
+    }
+    
     @IBAction func goBack(sender: UIButton) {
         dismissViewControllerAnimated(true, completion: nil)
     }

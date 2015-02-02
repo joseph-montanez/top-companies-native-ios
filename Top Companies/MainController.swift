@@ -22,6 +22,12 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    override func viewDidAppear(animated: Bool) {
+        if let selectedPath = tableView.indexPathForSelectedRow() {
+            tableView.deselectRowAtIndexPath(selectedPath, animated: false)
+        }
+    }
+    
     @IBAction func unwindToSearch(segue: UIStoryboardSegue) {
         
     }
@@ -43,6 +49,19 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func textFieldShouldReturn(textField: UITextField!) -> Bool {
         textField.resignFirstResponder()
         return false
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        //-- Why do I have to write this in code??!?!?!??!
+        if (tableView.respondsToSelector(Selector("setSeparatorInset:"))) {
+            tableView.separatorInset = UIEdgeInsetsZero
+        }
+        if (tableView.respondsToSelector(Selector("setLayoutMargins:"))) {
+            tableView.layoutMargins = UIEdgeInsetsZero
+        }
+        if (cell.respondsToSelector(Selector("setLayoutMargins:"))) {
+            cell.layoutMargins = UIEdgeInsetsZero
+        }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -72,11 +91,17 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
         println("Selected row! - \(indexPath.row)")
         
         let item = self.results[indexPath.row]
+        selectedIndex = indexPath.row
+        
         switch item.type {
         case .Category:
-            selectedIndex = indexPath.row
+            println("Go to company listing view")
+            performSegueWithIdentifier("showCategoryListing", sender: self)
+            break
         case .Company:
-            println("TODO: implement go to company")
+            println("Go to company details view")
+            performSegueWithIdentifier("jumpToCompanyDetails", sender: self)
+            break
         }
     }
     
@@ -107,6 +132,9 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let controller = segue.destinationViewController as ListController
             controller.promise = Api().listing(results[selectedIndex].id)
             controller.categoryId = results[selectedIndex].id.toInt()!
+        } else if (name == "jumpToCompanyDetails") {
+            let controller = segue.destinationViewController as CompanyDetailViewController
+            
         }
     }
 }
