@@ -10,6 +10,7 @@ import UIKit
 
 class CompanyDetailTableViewController: UITableViewController {
     @IBOutlet weak var bannerImage: UIImageView!
+    @IBOutlet weak var overviewText: UILabel!
     
     override func viewDidLoad() {
 
@@ -17,40 +18,31 @@ class CompanyDetailTableViewController: UITableViewController {
     
     //-- TODO: calculate height of each cell for dynamic text logic.
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        //-[NSString sizeWithFont:constrainedToSize:]
-//        CGSize size = [string sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:17.0f]}];
-//        
-//        // Values are fractional -- you should take the ceilf to get equivalent values
-//        CGSize adjustedSize = CGSizeMake(ceilf(size.width), ceilf(size.height));
+        var cellHeight : CGFloat = 40
         
-//        tableView.r
-//        NSString *str = [dataSourceArray objectAtIndex:indexPath.row];
-//        CGSize size = [str sizeWithFont:[UIFont fontWithName:@"Helvetica Nue" size:17] constrainedToSize:CGSizeMake(300, 999) lineBreakMode:NSLineBreakByWordWrapping];
-//        NSLog(@"%f",size.height);
-//        return size.height + 10;
-//        return CGFloat(44.0)
-        //BannerImageCell
-        //CompanyInfo
-        //CompanyOverview
-        if let cell = self.tableView.cellForRowAtIndexPath(indexPath) {
-            if let id = cell.reuseIdentifier {
-                switch id {
-                case "BannerImageCell":
-                    return 120
-                case "CompanyInfo":
-                    return 124
-                case "CompanyOverview":
-                    //-- TODO: dynamic cell calculation
-                    return UITableViewAutomaticDimension
-                default:
-                    return UITableViewAutomaticDimension
-                }
-                
-            } else {
-                return UITableViewAutomaticDimension
-            }
-        } else {
-            return UITableViewAutomaticDimension
+        switch indexPath.row {
+        case 0:
+            cellHeight = 120
+            break
+        case 1:
+            cellHeight = 124
+            break
+        case 2:
+            let font = UIFont(name: "Helvetica Neue", size: 16)
+            let screen = UIScreen.mainScreen()
+            let width = screen.bounds.width - CGFloat(20.0) /* 20 margin */
+            let constraintSize = CGSizeMake(width, CGFloat(MAXFLOAT))
+            overviewText.sizeThatFits(constraintSize)
+            overviewText.sizeToFit()
+            let bounds = overviewText.bounds
+            
+            cellHeight = bounds.height
+            break
+        default:
+            cellHeight = 120
+            break
         }
+        println("Row \(indexPath.row) has height of \(cellHeight)")
+        return cellHeight;
     }
 }

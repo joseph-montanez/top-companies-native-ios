@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Zmu-Jg-KBF">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
@@ -393,7 +393,7 @@
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CompanyOverview" rowHeight="120" id="ZOl-P1-hmM" userLabel="Company Overview">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CompanyOverview" rowHeight="600" id="ZOl-P1-hmM" userLabel="Company Overview">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZOl-P1-hmM" id="8o7-g9-tRR">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -405,8 +405,8 @@
                                                     <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qGt-gW-tjz">
-                                                    <rect key="frame" x="10" y="48" width="300" height="504"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qGt-gW-tjz">
+                                                    <rect key="frame" x="10" y="48" width="300" height="120"/>
                                                     <mutableString key="text">International Business Machines Corporation (IBM) is an information technology (IT) company. It operates under five segments: Global Technology Services (GTS), Global Business Services (GBS), Software, Systems and Technology, and Global Financing. GTS primarily provides IT infrastructure services and business process services. GBS primarily provides professional services and application management services. IBM s Software segment consists primarily of middleware and operating systems software. IBM provides clients with business solutions requiring advanced computing power and storage capabilities. Global Financing invests in financing assets and leverages with debt. During the year ended December 31, 2010, IBM acquired Intelliden Inc., National Interest Security Company, LLC, Cast Iron Systems, BigFix, Inc., Datacap Inc., Clarity Systems, BLADE Network Technologies, Netezza Corporation, Lombardi and Unica Corporation. In April 2011, it acquired TRIRIGA, Inc.</mutableString>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -441,6 +441,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="bannerImage" destination="HOf-Jj-Adi" id="aYW-sa-dis"/>
+                        <outlet property="overviewText" destination="qGt-gW-tjz" id="crM-eB-ZJs"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BYQ-N4-Am5" userLabel="First Responder" sceneMemberID="firstResponder"/>
