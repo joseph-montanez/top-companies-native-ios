@@ -9,9 +9,31 @@
 import UIKit
 
 class CompanyDetailTableViewController: UITableViewController {
+    // Banner Image
     @IBOutlet weak var bannerImage: UIImageView!
-    @IBOutlet weak var overviewText: UILabel!
+    
+    // Basic Company Information
+    @IBOutlet weak var companyName: UILabel!
+    @IBOutlet weak var address: UILabel!
+    @IBOutlet weak var cityStateZip: UILabel!
+    @IBOutlet weak var website: UILabel!
+    @IBOutlet weak var phone: UILabel!
+    
+    // Descrition
     @IBOutlet weak var descriptionText: UILabel!
+    
+    // Overview
+    @IBOutlet weak var overviewText: UILabel!
+    
+    // Business Information
+    @IBOutlet weak var year: UILabel!
+    @IBOutlet weak var revenue: UILabel!
+    @IBOutlet weak var employees: UILabel!
+    
+    // Hidable Groups
+    @IBOutlet weak var overviewCell: UITableViewCell!
+    @IBOutlet weak var descriptionCell: UITableViewCell!
+    @IBOutlet weak var businessInformationCell: UITableViewCell!
     
     
     
@@ -54,6 +76,13 @@ class CompanyDetailTableViewController: UITableViewController {
             let bounds = descriptionText.bounds
             
             cellHeight = bounds.height + 8 /* 8 margin */
+            break
+        case 4:
+            cellHeight = 80
+            break
+        case 5:
+            //-- TODO: auto hide year, rev, and employs, change height
+            cellHeight = 160
             break
         default:
             cellHeight = 120

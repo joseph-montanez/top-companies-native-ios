@@ -14,6 +14,7 @@ class ListController : UIViewController, UITableViewDelegate, UITableViewDataSou
     var categoryId : Int = 0
     var promise: Promise<[TPCompany]>?
     var results: [TPCompany] = []
+    var selectedCompany: TPCompany?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -71,15 +72,30 @@ class ListController : UIViewController, UITableViewDelegate, UITableViewDataSou
     
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         println("Selected row! - \(indexPath.row)")
-        
-//        let item = self.results[indexPath.row]
-//        switch item.type {
-//        case .Category:
-//            let listController = getStoryBoard().instantiateViewControllerWithIdentifier("ListController") as ListController
-//            listController.categoryId = item.id
-//            self.presentViewController(listController, animated: true, completion: nil)
-//        case .Company:
-//            println("TODO: implement go to company")
-//        }
+        self.selectedCompany = self.results[indexPath.row]
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "showCompanyDetails") {
+            var detailController = segue.destinationViewController as CompanyDetailViewController
+            detailController.company = self.selectedCompany
+            
+            if let row = self.tableView.indexPathForSelectedRow()?.row {
+                let company = self.results[row];
+                let promise = Api().detail(company.id)
+                
+                // API is good, pass to set func to populate
+                promise.then { (companyFullDetail:TPCompany) -> Void in
+                    detailController.setCompany(companyFullDetail)
+                }
+                // API failed, let fall back with the data that we have
+                promise.catch { error in
+                    detailController.setCompany(nil)
+                }
+            } else {
+                println("ListController: there is no selected company")
+            }
+            
+        }
     }
 }
