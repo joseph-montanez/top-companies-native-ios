@@ -332,7 +332,7 @@
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" reuseIdentifier="CompanyInfo" rowHeight="124" id="Lby-XY-S9Z" userLabel="Company Info Cell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" reuseIdentifier="CompanyInfo" rowHeight="124" id="Lby-XY-S9Z" userLabel="Company Info Cell">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lby-XY-S9Z" id="2VK-kP-Fw7">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -393,7 +393,7 @@
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CompanyOverview" rowHeight="600" id="ZOl-P1-hmM" userLabel="Company Overview">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CompanyOverview" rowHeight="600" id="ZOl-P1-hmM" userLabel="Company Overview">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZOl-P1-hmM" id="8o7-g9-tRR">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -423,7 +423,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CompanyDescription" id="KW7-4R-2Rd" userLabel="Company Description">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CompanyDescription" id="KW7-4R-2Rd" userLabel="Company Description">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KW7-4R-2Rd" id="LLu-Pu-tUD">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -442,6 +442,13 @@
                                                 <constraint firstItem="kpa-iE-s8B" firstAttribute="leading" secondItem="LLu-Pu-tUD" secondAttribute="leading" constant="10" id="Lzw-us-cuZ"/>
                                                 <constraint firstAttribute="trailing" secondItem="kpa-iE-s8B" secondAttribute="trailing" constant="10" id="mzG-hw-h6e"/>
                                             </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CompanyBusinessInformationGroup" id="ewF-qK-Mab">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ewF-qK-Mab" id="9cP-gx-VTr">
+                                            <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
