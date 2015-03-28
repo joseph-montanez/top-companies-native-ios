@@ -11,6 +11,9 @@ import UIKit
 class CompanyDetailTableViewController: UITableViewController {
     @IBOutlet weak var bannerImage: UIImageView!
     @IBOutlet weak var overviewText: UILabel!
+    @IBOutlet weak var descriptionText: UILabel!
+    
+    
     
     override func viewDidLoad() {
 
@@ -37,6 +40,20 @@ class CompanyDetailTableViewController: UITableViewController {
             let bounds = overviewText.bounds
             
             cellHeight = bounds.height
+                + 20 /* Top Margin of Overview Title */
+                + 24 /* Height of Overview Title */
+                + 8 /* 8 margin */
+            break
+        case 3:
+            let font = UIFont(name: "Helvetica Neue", size: 12)
+            let screen = UIScreen.mainScreen()
+            let width = screen.bounds.width - CGFloat(20.0) /* 20 margin */
+            let constraintSize = CGSizeMake(width, CGFloat(MAXFLOAT))
+            descriptionText.sizeThatFits(constraintSize)
+            descriptionText.sizeToFit()
+            let bounds = descriptionText.bounds
+            
+            cellHeight = bounds.height + 8 /* 8 margin */
             break
         default:
             cellHeight = 120

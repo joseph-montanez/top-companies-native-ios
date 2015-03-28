@@ -399,17 +399,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VOk-Nw-M2D" userLabel="Company Name">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VOk-Nw-M2D" userLabel="Overview Title">
                                                     <rect key="frame" x="0.0" y="20" width="320" height="24"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                                     <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qGt-gW-tjz">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qGt-gW-tjz" userLabel="Overview">
                                                     <rect key="frame" x="10" y="48" width="300" height="504"/>
                                                     <string key="text">International Business Machines Corporation (IBM) is an information technology (IT) company. It operates under five segments: Global Technology Services (GTS), Global Business Services (GBS), Software, Systems and Technology, and Global Financing. GTS primarily provides IT infrastructure services and business process services. GBS primarily provides professional services and application management services. IBM s Software segment consists primarily of middleware and operating systems software. IBM provides clients with business solutions requiring advanced computing power and storage capabilities. Global Financing invests in financing assets and leverages with debt. During the year ended December 31, 2010, IBM acquired Intelliden Inc., National Interest Security Company, LLC, Cast Iron Systems, BigFix, Inc., Datacap Inc., Clarity Systems, BLADE Network Technologies, Netezza Corporation, Lombardi and Unica Corporation. In April 2011, it acquired TRIRIGA, Inc.</string>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.29803921568627451" green="0.32549019607843138" blue="0.33725490196078434" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -423,11 +423,25 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="KW7-4R-2Rd">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CompanyDescription" id="KW7-4R-2Rd" userLabel="Company Description">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KW7-4R-2Rd" id="LLu-Pu-tUD">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpa-iE-s8B" userLabel="Company Description">
+                                                    <rect key="frame" x="10" y="4" width="300" height="56"/>
+                                                    <string key="text">Digitaria is a full service digital agency made up of visionary online marketing strategists, web technologists and creative website designers from around the world.</string>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                    <color key="textColor" red="0.29803921568627451" green="0.32549019607843138" blue="0.33725490196078434" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="kpa-iE-s8B" firstAttribute="top" secondItem="LLu-Pu-tUD" secondAttribute="top" constant="4" id="1W6-Ir-3OD"/>
+                                                <constraint firstItem="kpa-iE-s8B" firstAttribute="leading" secondItem="LLu-Pu-tUD" secondAttribute="leading" constant="10" id="Lzw-us-cuZ"/>
+                                                <constraint firstAttribute="trailing" secondItem="kpa-iE-s8B" secondAttribute="trailing" constant="10" id="mzG-hw-h6e"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -441,6 +455,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="bannerImage" destination="HOf-Jj-Adi" id="aYW-sa-dis"/>
+                        <outlet property="descriptionText" destination="kpa-iE-s8B" id="XuY-ba-b2F"/>
                         <outlet property="overviewText" destination="qGt-gW-tjz" id="crM-eB-ZJs"/>
                     </connections>
                 </tableViewController>
