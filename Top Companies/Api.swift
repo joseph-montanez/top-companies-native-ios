@@ -51,6 +51,7 @@ class Api {
             let request:Promise<NSDictionary> = NSURLConnection.GET(searchEndPoint, query: params)
             request.then { (jsonResults:NSDictionary) -> Void in
                 let company = TPCompany()
+                company.fromJson(jsonResults)
                 //company.id = jsonResults[""]
                 fulfiller(company)
             }

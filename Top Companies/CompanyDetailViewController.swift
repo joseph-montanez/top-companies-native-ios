@@ -33,7 +33,8 @@ class CompanyDetailViewController: UIViewController {
             println("company has details")
             self.company = company
             if let controller = self.tableViewController {
-                controller.descriptionText.text = "Hello World"
+                controller.setCompany(company)
+                
                 println("Loaded company data")
                 
             } else {
@@ -41,6 +42,7 @@ class CompanyDetailViewController: UIViewController {
             }
         } else {
             println("company is nil")
+            // TODO unset everything?
         }
         
     }

@@ -23,6 +23,7 @@ class CompanyDetailTableViewController: UITableViewController {
     @IBOutlet weak var descriptionText: UILabel!
     
     // Overview
+    @IBOutlet weak var overviewTitleText: UILabel!
     @IBOutlet weak var overviewText: UILabel!
     
     // Business Information
@@ -31,64 +32,106 @@ class CompanyDetailTableViewController: UITableViewController {
     @IBOutlet weak var employees: UILabel!
     
     // Hidable Groups
+    @IBOutlet weak var overviewTitleCell: UITableViewCell!
     @IBOutlet weak var overviewCell: UITableViewCell!
     @IBOutlet weak var descriptionCell: UITableViewCell!
     @IBOutlet weak var businessInformationCell: UITableViewCell!
     
-    
+    var company: TPCompany?
     
     override func viewDidLoad() {
-
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 0
     }
     
-    //-- TODO: calculate height of each cell for dynamic text logic.
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        var cellHeight : CGFloat = 40
+    func setCompany(company: TPCompany) {
+        self.company = company
         
-        switch indexPath.row {
-        case 0:
-            cellHeight = 120
-            break
-        case 1:
-            cellHeight = 124
-            break
-        case 2:
-            let font = UIFont(name: "Helvetica Neue", size: 16)
-            let screen = UIScreen.mainScreen()
-            let width = screen.bounds.width - CGFloat(20.0) /* 20 margin */
-            let constraintSize = CGSizeMake(width, CGFloat(MAXFLOAT))
-            overviewText.sizeThatFits(constraintSize)
-            overviewText.sizeToFit()
-            let bounds = overviewText.bounds
+        self.companyName.text = company.name
+        self.address.text = company.address
+        self.cityStateZip.text = company.city
+        self.website.text = company.website
+        self.phone.text = company.phone
+        
+        self.overviewText.text = company.description
+        if countElements(company.description) == 0 {
+            overviewTitleCell.hidden = true
+            overviewCell.hidden = true
             
-            cellHeight = bounds.height
-                + 20 /* Top Margin of Overview Title */
-                + 24 /* Height of Overview Title */
-                + 8 /* 8 margin */
-            break
-        case 3:
-            let font = UIFont(name: "Helvetica Neue", size: 12)
-            let screen = UIScreen.mainScreen()
-            let width = screen.bounds.width - CGFloat(20.0) /* 20 margin */
-            let constraintSize = CGSizeMake(width, CGFloat(MAXFLOAT))
-            descriptionText.sizeThatFits(constraintSize)
-            descriptionText.sizeToFit()
-            let bounds = descriptionText.bounds
+            overviewTitleCell.contentView.hidden = true
+            overviewCell.contentView.hidden = true
+
+        } else {
+            overviewTitleCell.hidden = false
+            overviewCell.hidden = false
             
-            cellHeight = bounds.height + 8 /* 8 margin */
-            break
-        case 4:
-            cellHeight = 80
-            break
-        case 5:
-            //-- TODO: auto hide year, rev, and employs, change height
-            cellHeight = 160
-            break
-        default:
-            cellHeight = 120
-            break
+            overviewTitleCell.contentView.hidden = false
+            overviewCell.contentView.hidden = false
+            
+            //overviewTitleCell.
         }
-        println("Row \(indexPath.row) has height of \(cellHeight)")
-        return cellHeight;
+        self.descriptionText.text = company.descriptionMeta
+        if countElements(company.descriptionMeta) == 0 {
+            descriptionCell.hidden = true
+        } else {
+            descriptionCell.hidden = false
+        }
+        
+        //tableView.reloadData()
     }
+    
+//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        return 0;
+//    }
+    
+    //-- TODO: calculate height of each cell for dynamic text logic.
+//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        var cellHeight : CGFloat = 40
+//        
+//        switch indexPath.row {
+//        case 0:
+//            cellHeight = 120
+//            break
+//        case 1:
+//            cellHeight = 124
+//            break
+//        case 2:
+//            let font = UIFont(name: "Helvetica Neue", size: 16)
+//            let screen = UIScreen.mainScreen()
+//            let width = screen.bounds.width - CGFloat(20.0) /* 20 margin */
+//            let constraintSize = CGSizeMake(width, CGFloat(MAXFLOAT))
+//            overviewText.sizeThatFits(constraintSize)
+//            overviewText.sizeToFit()
+//            let bounds = overviewText.bounds
+//            
+//            cellHeight = bounds.height
+//                + 20 /* Top Margin of Overview Title */
+//                + 24 /* Height of Overview Title */
+//                + 8 /* 8 margin */
+//            break
+//        case 3:
+//            let font = UIFont(name: "Helvetica Neue", size: 12)
+//            let screen = UIScreen.mainScreen()
+//            let width = screen.bounds.width - CGFloat(20.0) /* 20 margin */
+//            let constraintSize = CGSizeMake(width, CGFloat(MAXFLOAT))
+//            descriptionText.sizeThatFits(constraintSize)
+//            descriptionText.sizeToFit()
+//            let bounds = descriptionText.bounds
+//            
+//            cellHeight = bounds.height + 8 /* 8 margin */
+//            break
+//        case 4:
+//            cellHeight = 80
+//            break
+//        case 5:
+//            //-- TODO: auto hide year, rev, and employs, change height
+//            cellHeight = 160
+//            break
+//        default:
+//            cellHeight = 120
+//            break
+//        }
+//        println("Row \(indexPath.row) has height of \(cellHeight)")
+//        return cellHeight;
+//    }
 }

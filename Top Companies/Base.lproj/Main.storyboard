@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -313,12 +313,16 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
                                                     <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="width" secondItem="HOf-Jj-Adi" secondAttribute="height" multiplier="8:3" id="7EI-RP-j5G"/>
                                                         <constraint firstAttribute="height" constant="120" id="BnR-Jw-KKi"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fade" translatesAutoresizingMaskIntoConstraints="NO" id="d9l-tg-Ou7">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
                                                     <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="d9l-tg-Ou7" secondAttribute="height" multiplier="8:3" id="agu-dt-qkI"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -333,7 +337,7 @@
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" reuseIdentifier="CompanyInfo" rowHeight="124" id="Lby-XY-S9Z" userLabel="Company Info Cell">
+                                    <tableViewCell contentMode="scaleToFill" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="124" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" reuseIdentifier="CompanyInfo" id="Lby-XY-S9Z" userLabel="Company Info Cell">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lby-XY-S9Z" id="2VK-kP-Fw7">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -394,9 +398,9 @@
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CompanyOverview" rowHeight="600" id="ZOl-P1-hmM" userLabel="Company Overview">
+                                    <tableViewCell contentMode="scaleToFill" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="44" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CompanyOverview" id="ZOl-P1-hmM" userLabel="Company Overview Title">
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZOl-P1-hmM" id="8o7-g9-tRR">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="120" tableViewCell="ZOl-P1-hmM" id="8o7-g9-tRR">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -406,21 +410,33 @@
                                                     <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qGt-gW-tjz" userLabel="Overview">
-                                                    <rect key="frame" x="10" y="48" width="300" height="504"/>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="VOk-Nw-M2D" secondAttribute="trailing" id="FIc-Bt-mR5"/>
+                                                <constraint firstItem="VOk-Nw-M2D" firstAttribute="leading" secondItem="8o7-g9-tRR" secondAttribute="leading" id="Umr-w2-eJO"/>
+                                                <constraint firstItem="VOk-Nw-M2D" firstAttribute="top" secondItem="8o7-g9-tRR" secondAttribute="top" constant="20" id="elR-tX-pf1"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="600" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CompanyOverview" id="lPG-v8-vp7" userLabel="Company Overview">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="600" tableViewCell="lPG-v8-vp7" id="l2u-8c-pcN">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="300" placeholderIntrinsicHeight="504" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cv2-7N-Xhp" userLabel="Overview">
+                                                    <rect key="frame" x="10" y="12" width="300" height="20"/>
                                                     <string key="text">International Business Machines Corporation (IBM) is an information technology (IT) company. It operates under five segments: Global Technology Services (GTS), Global Business Services (GBS), Software, Systems and Technology, and Global Financing. GTS primarily provides IT infrastructure services and business process services. GBS primarily provides professional services and application management services. IBM s Software segment consists primarily of middleware and operating systems software. IBM provides clients with business solutions requiring advanced computing power and storage capabilities. Global Financing invests in financing assets and leverages with debt. During the year ended December 31, 2010, IBM acquired Intelliden Inc., National Interest Security Company, LLC, Cast Iron Systems, BigFix, Inc., Datacap Inc., Clarity Systems, BLADE Network Technologies, Netezza Corporation, Lombardi and Unica Corporation. In April 2011, it acquired TRIRIGA, Inc.</string>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                                    <color key="textColor" red="0.29803921568627451" green="0.32549019607843138" blue="0.33725490196078434" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" red="0.29803921570000003" green="0.32549019610000002" blue="0.33725490200000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="VOk-Nw-M2D" secondAttribute="trailing" id="FIc-Bt-mR5"/>
-                                                <constraint firstItem="qGt-gW-tjz" firstAttribute="leading" secondItem="8o7-g9-tRR" secondAttribute="leading" constant="10" id="I2k-qq-LWJ"/>
-                                                <constraint firstItem="qGt-gW-tjz" firstAttribute="top" secondItem="VOk-Nw-M2D" secondAttribute="bottom" constant="4" id="Sfn-dq-5hs"/>
-                                                <constraint firstItem="VOk-Nw-M2D" firstAttribute="leading" secondItem="8o7-g9-tRR" secondAttribute="leading" id="Umr-w2-eJO"/>
-                                                <constraint firstItem="VOk-Nw-M2D" firstAttribute="top" secondItem="8o7-g9-tRR" secondAttribute="top" constant="20" id="elR-tX-pf1"/>
-                                                <constraint firstAttribute="trailing" secondItem="qGt-gW-tjz" secondAttribute="trailing" constant="10" id="g0d-YB-1fk"/>
+                                                <constraint firstItem="Cv2-7N-Xhp" firstAttribute="leading" secondItem="l2u-8c-pcN" secondAttribute="leading" constant="10" id="3CI-9S-LOs"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Cv2-7N-Xhp" secondAttribute="bottom" constant="4" id="MSb-Nt-J3F"/>
+                                                <constraint firstAttribute="trailing" secondItem="Cv2-7N-Xhp" secondAttribute="trailing" constant="10" id="Mhe-fG-4sC"/>
+                                                <constraint firstItem="Cv2-7N-Xhp" firstAttribute="top" secondItem="l2u-8c-pcN" secondAttribute="topMargin" constant="4" id="mzA-Ny-oeo"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -445,7 +461,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CompanyBusinessInformationGroup" rowHeight="160" id="ewF-qK-Mab">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CompanyBusinessInformationGroup" id="ewF-qK-Mab">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ewF-qK-Mab" id="9cP-gx-VTr">
@@ -559,8 +575,10 @@
                         <outlet property="descriptionCell" destination="KW7-4R-2Rd" id="JU8-TI-yWZ"/>
                         <outlet property="descriptionText" destination="kpa-iE-s8B" id="XuY-ba-b2F"/>
                         <outlet property="employees" destination="kck-bP-LwK" id="hBi-zl-Owa"/>
-                        <outlet property="overviewCell" destination="ZOl-P1-hmM" id="BEm-Rb-DNg"/>
-                        <outlet property="overviewText" destination="qGt-gW-tjz" id="crM-eB-ZJs"/>
+                        <outlet property="overviewCell" destination="lPG-v8-vp7" id="QbU-O3-537"/>
+                        <outlet property="overviewText" destination="Cv2-7N-Xhp" id="HnH-Oe-5iU"/>
+                        <outlet property="overviewTitleCell" destination="ZOl-P1-hmM" id="cDx-ib-0x4"/>
+                        <outlet property="overviewTitleText" destination="VOk-Nw-M2D" id="v7c-bk-Bv6"/>
                         <outlet property="phone" destination="WlK-6m-FdI" id="aXw-Cx-TzY"/>
                         <outlet property="revenue" destination="hw5-Vt-oAi" id="n3C-sF-bBp"/>
                         <outlet property="website" destination="85z-Wn-RWN" id="AiB-bl-h5g"/>

@@ -24,6 +24,11 @@ class TPCompany {
     var revenue : Int = 0
     var founded : Int = 0
     
+    func getCityStateZip() {
+        if (countElements(city) > 0) {
+        }
+    }
+    
     func fromJson(json: NSDictionary) {
         id = json["companies_id"] as Int
         name = json["companies_name"] as String
