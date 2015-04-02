@@ -73,7 +73,7 @@ class ListController : UIViewController, UITableViewDelegate, UITableViewDataSou
     func loadDataToCell(cell: CompanyTableViewCell, company: TPCompany) -> CompanyTableViewCell {
         cell.name.text = company.name
         cell.address.text = company.address
-        cell.cityStateZip.text = "\(company.city) \(company.city) \(company.zip)"
+        cell.cityStateZip.text = "\(company.city) \(company.state) \(company.zip)"
         cell.website.text = company.website
         cell.phone.text = company.phone
         
