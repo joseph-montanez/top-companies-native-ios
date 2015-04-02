@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Dollar
 
 class CompanyDetailTableViewController: UITableViewController {
     // Banner Image
@@ -47,6 +48,8 @@ class CompanyDetailTableViewController: UITableViewController {
     func setCompany(company: TPCompany) {
         self.company = company
         
+        tableView.beginUpdates()
+        
         self.companyName.text = company.name
         self.address.text = company.address
         self.cityStateZip.text = company.city
@@ -77,8 +80,54 @@ class CompanyDetailTableViewController: UITableViewController {
             descriptionCell.hidden = false
         }
         
-        //tableView.reloadData()
+        tableView.reloadData()
+        tableView.endUpdates()
     }
+    
+//    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+//        let cell = super.tableView.cellForRowAtIndexPath(indexPath)
+//        
+//    }
+    
+//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        let cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
+//        if cell.hidden == true {
+//            return 0.0
+//        } else {
+//            return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+//        }
+//    }
+
+    
+//    
+//    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        
+//        
+//        var total = 0
+//        
+//        for index in 0...5 {
+//            let indexPath = NSIndexPath(forRow: index, inSection: 0)
+//            let cell = tableView.cellForRowAtIndexPath(indexPath)
+//        }
+//        
+//        let indexPaths = (0...5).map {
+//            NSIndexPath(forRow: $0, inSection: 0)
+//        }
+////        let cells = indexPaths.map{ indexPath in
+////            tableView.cellForRowAtIndexPath(indexPath)
+////        }
+//        
+////        let visibleAmount = $.reduce(cells, initial: 0) { (total, cell) in
+////            switch cell?.hidden {
+////            case .Some(true):
+////                return total
+////            case _:
+////                return total + 1
+////            }
+////        }
+//        
+//        return 4
+//    }
     
 //    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
 //        return 0;
