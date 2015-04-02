@@ -12,11 +12,13 @@ import PromiseKit
 class ListController : UIViewController, UITableViewDelegate, UITableViewDataSource {
     var simpleTableIdentifier: String = "CompanyItemCell"
     var categoryId : Int = 0
+    var subHeaderTitle: String?
     var promise: Promise<[TPCompany]>?
     var results: [TPCompany] = []
     var selectedCompany: TPCompany?
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var subHeader: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,12 +26,20 @@ class ListController : UIViewController, UITableViewDelegate, UITableViewDataSou
         println("Loaded! with category \(categoryId)")
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if let title = subHeaderTitle {
+            subHeader?.text = title
+        }
         promise?.then { (companies: [TPCompany]) -> Void in
             println("Request finished")
             self.results = companies
             self.tableView.reloadData()
         }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     @IBAction func unwindToList(segue: UIStoryboardSegue) {
@@ -83,6 +93,7 @@ class ListController : UIViewController, UITableViewDelegate, UITableViewDataSou
             if let row = self.tableView.indexPathForSelectedRow()?.row {
                 let company = self.results[row];
                 let promise = Api().detail(company.id)
+                detailController.subHeaderTitle = subHeaderTitle
                 
                 // API is good, pass to set func to populate
                 promise.then { (companyFullDetail:TPCompany) -> Void in

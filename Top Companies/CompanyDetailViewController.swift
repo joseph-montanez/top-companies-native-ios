@@ -13,9 +13,18 @@ class CompanyDetailViewController: UIViewController {
     
     @IBOutlet weak var subHeader: UILabel!
     
+    var subHeaderTitle: String?
     var company: TPCompany?
     var companyOverride: Promise<TPCompany>?
     var tableViewController: CompanyDetailTableViewController?
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let title = subHeaderTitle {
+            subHeader?.text = title
+        }
+    }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)

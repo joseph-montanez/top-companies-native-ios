@@ -129,7 +129,12 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let name = segue.identifier
         if (name == "showCategoryListing") {
+            
             let controller = segue.destinationViewController as ListController
+            if let row = self.tableView.indexPathForSelectedRow()?.row {
+                let searchItem = self.results[row];
+                controller.subHeaderTitle = searchItem.name
+            }
             controller.promise = Api().listing(results[selectedIndex].id)
             controller.categoryId = results[selectedIndex].id.toInt()!
         } else if (name == "jumpToCompanyDetails") {
