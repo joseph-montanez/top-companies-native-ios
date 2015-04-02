@@ -129,16 +129,31 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let name = segue.identifier
         if (name == "showCategoryListing") {
-            
             let controller = segue.destinationViewController as ListController
             if let row = self.tableView.indexPathForSelectedRow()?.row {
                 let searchItem = self.results[row];
                 controller.subHeaderTitle = searchItem.name
+                controller.promise = Api().listing(searchItem.id)
+                controller.categoryId = searchItem.id.toInt()!
             }
-            controller.promise = Api().listing(results[selectedIndex].id)
-            controller.categoryId = results[selectedIndex].id.toInt()!
         } else if (name == "jumpToCompanyDetails") {
             let controller = segue.destinationViewController as CompanyDetailViewController
+            if let row = self.tableView.indexPathForSelectedRow()?.row {
+                let searchItem = self.results[row];
+                let companyId = searchItem.id.toInt()!
+                let promise = Api().detail(companyId)
+                controller.companyOverride = promise
+                
+                // API is good, pass to set func to populate
+                promise.then { companyFullDetail in
+                    controller.setCompany(companyFullDetail)
+                }
+                // API failed, let fall back with the data that we have
+                promise.catch { error in
+                    controller.setCompany(nil)
+                }
+                controller.subHeaderTitle = searchItem.name
+            }
             
         }
     }
