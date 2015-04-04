@@ -16,7 +16,28 @@ class CompanyDetailViewController: UIViewController {
     var subHeaderTitle: String?
     var company: TPCompany?
     var companyOverride: Promise<TPCompany>?
-    var tableViewController: CompanyDetailTableViewController?
+    
+    @IBOutlet weak var scrollContrainerView: UIView!
+    
+    // Banner Image
+    @IBOutlet weak var bannerImage: UIImageView!
+    
+    // Basic Company Information
+    @IBOutlet weak var companyName: UILabel!
+    @IBOutlet weak var address: UILabel!
+    @IBOutlet weak var cityStateZip: UILabel!
+    @IBOutlet weak var website: UILabel!
+    @IBOutlet weak var phone: UILabel!
+    
+    // Overview
+    @IBOutlet weak var overviewTitleText: UILabel!
+    @IBOutlet weak var overviewTitleTextTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var overviewTitleTextBetweenConstraint: NSLayoutConstraint!
+    @IBOutlet weak var overviewTitleTextHeightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var overviewText: UILabel!
+    @IBOutlet weak var overviewTextBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var overviewTextHeightConstraint: NSLayoutConstraint!
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -30,25 +51,46 @@ class CompanyDetailViewController: UIViewController {
         super.viewDidAppear(animated)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "CompanyDetailSegue") {
-            self.tableViewController = segue.destinationViewController as? CompanyDetailTableViewController
-        }
-    }
-    
     func setCompany(companyOpt: TPCompany?) {
-        println("setCompany")
+        company = companyOpt
         if let company = companyOpt {
             println("company has details")
-            self.company = company
-            if let controller = self.tableViewController {
-                controller.setCompany(company)
+            //-- TODO Randomize Banner
                 
-                println("Loaded company data")
+            self.companyName.text = company.name
+            self.address.text = company.address
+            self.cityStateZip.text = company.city
+            self.website.text = company.website
+            self.phone.text = company.phone
+            
+            self.overviewText.text = company.description
+            
+            if countElements(company.description) == 0 {
+                //            overviewTitleCell.hidden = true
+                overviewTitleText.text = ""
+                overviewTitleTextTopConstraint.constant = 0
+                overviewTitleTextBetweenConstraint.constant = 0
+                overviewTitleTextHeightConstraint.constant = 0
+                overviewTitleTextHeightConstraint.priority = 750
                 
+                
+                //            overviewCell.hidden = true
+                overviewTextBottomConstraint.constant = 0
+                overviewTextHeightConstraint.constant = 0
+                overviewTextHeightConstraint.priority = 750
             } else {
-                println("table view controller not ready yet!")
+//                overviewTitleCell.hidden = false
+                overviewTitleText.text = "Overview"
+                overviewTitleTextTopConstraint.constant = 15
+                overviewTitleTextBetweenConstraint.constant = 4
+                overviewTitleTextHeightConstraint.priority = 250
+                
+//                overviewCell.hidden = false
+                overviewTextBottomConstraint.constant = 20
+                overviewTextHeightConstraint.priority = 250
             }
+            
+            scrollContrainerView.invalidateIntrinsicContentSize()
         } else {
             println("company is nil")
             // TODO unset everything?
