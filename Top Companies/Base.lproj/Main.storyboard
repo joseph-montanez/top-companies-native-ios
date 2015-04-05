@@ -295,14 +295,13 @@
         <!--Company Detail View Controller-->
         <scene sceneID="tfb-ce-ROK">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pnM-iW-5iW" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="Zmu-Jg-KBF" customClass="CompanyDetailViewController" customModule="Top_Companies" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bKn-zt-psq"/>
                         <viewControllerLayoutGuide type="bottom" id="R3u-V6-G7z"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ULe-JD-1Eb">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="1500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Ja-h2-UVn" userLabel="Heading">
@@ -359,10 +358,10 @@
                                     <constraint firstAttribute="height" constant="48" id="c1J-Tc-nlm"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JQk-mQ-Aht">
-                                <rect key="frame" x="0.0" y="135" width="320" height="345"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JQk-mQ-Aht">
+                                <rect key="frame" x="0.0" y="135" width="320" height="1365"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" verticalCompressionResistancePriority="1000" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jxo-kL-NPO" userLabel="Scroll Container View">
+                                    <view contentMode="scaleToFill" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="jxo-kL-NPO" userLabel="Scroll Container View">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="1500"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0WF-vt-XWk" userLabel="Banner View">
@@ -546,6 +545,7 @@
                                             <constraint firstItem="SAr-Xz-i2j" firstAttribute="top" secondItem="jau-VN-3Gt" secondAttribute="top" constant="15" id="Abp-kS-9qh"/>
                                             <constraint firstItem="2FU-ci-IAh" firstAttribute="leading" secondItem="axN-WC-BXZ" secondAttribute="trailing" constant="8" id="B3m-dL-6dd"/>
                                             <constraint firstItem="0WF-vt-XWk" firstAttribute="leading" secondItem="jxo-kL-NPO" secondAttribute="leading" id="C9u-B0-Mwq"/>
+                                            <constraint firstAttribute="height" priority="250" constant="1500" id="DCE-sr-kat"/>
                                             <constraint firstItem="y0m-Jw-OUs" firstAttribute="top" secondItem="gBM-xC-y7M" secondAttribute="bottom" id="ISR-nk-ZDB"/>
                                             <constraint firstItem="JFk-xb-Wa6" firstAttribute="top" secondItem="a4d-Nz-f0W" secondAttribute="bottom" constant="4" id="J07-Be-odP"/>
                                             <constraint firstAttribute="centerX" secondItem="J54-op-tCg" secondAttribute="centerX" id="KIC-Il-Cdg"/>
@@ -607,12 +607,14 @@
                             <constraint firstItem="6Ja-h2-UVn" firstAttribute="top" secondItem="ULe-JD-1Eb" secondAttribute="top" id="v8H-vE-kbq"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="1500"/>
                     <connections>
                         <outlet property="address" destination="JFk-xb-Wa6" id="9Bh-Nr-buP"/>
                         <outlet property="bannerImage" destination="6Jg-oS-An6" id="Zk4-V2-1Ig"/>
                         <outlet property="cityStateZip" destination="YU0-3E-gxz" id="ky5-ds-hK6"/>
                         <outlet property="companyName" destination="a4d-Nz-f0W" id="qHT-0W-ZqQ"/>
+                        <outlet property="noOfEmployees" destination="BHy-5A-wsl" id="660-Zq-WWL"/>
                         <outlet property="overviewText" destination="J54-op-tCg" id="GCC-t7-ckP"/>
                         <outlet property="overviewTextBottomConstraint" destination="xVs-Xn-iMW" id="Qja-T5-jc8"/>
                         <outlet property="overviewTextHeightConstraint" destination="Ri9-Wc-xG5" id="1g1-fs-0RY"/>
@@ -621,11 +623,14 @@
                         <outlet property="overviewTitleTextHeightConstraint" destination="3S1-CH-1uB" id="892-wM-tZQ"/>
                         <outlet property="overviewTitleTextTopConstraint" destination="cDn-FA-tO8" id="wEn-Ma-JUo"/>
                         <outlet property="phone" destination="y0m-Jw-OUs" id="tMt-A5-VDQ"/>
+                        <outlet property="scrollContainerViewHeight" destination="DCE-sr-kat" id="j67-cE-kxy"/>
                         <outlet property="scrollContrainerView" destination="jxo-kL-NPO" id="cak-68-r1M"/>
+                        <outlet property="scrollView" destination="JQk-mQ-Aht" id="23u-QR-bWD"/>
                         <outlet property="subHeader" destination="tKZ-k5-iwh" id="gJm-0r-PaP"/>
                         <outlet property="website" destination="gBM-xC-y7M" id="N8s-iH-9tO"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pnM-iW-5iW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2004" y="307"/>
         </scene>

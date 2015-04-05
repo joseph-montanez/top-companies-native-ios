@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreFoundation
 import PromiseKit
 
 class CompanyDetailViewController: UIViewController {
@@ -17,7 +18,9 @@ class CompanyDetailViewController: UIViewController {
     var company: TPCompany?
     var companyOverride: Promise<TPCompany>?
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var scrollContrainerView: UIView!
+    @IBOutlet weak var scrollContainerViewHeight: NSLayoutConstraint!
     
     // Banner Image
     @IBOutlet weak var bannerImage: UIImageView!
@@ -38,6 +41,8 @@ class CompanyDetailViewController: UIViewController {
     @IBOutlet weak var overviewText: UILabel!
     @IBOutlet weak var overviewTextBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var overviewTextHeightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var noOfEmployees: UILabel!
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -90,12 +95,29 @@ class CompanyDetailViewController: UIViewController {
                 overviewTextHeightConstraint.priority = 250
             }
             
-            scrollContrainerView.invalidateIntrinsicContentSize()
+            //scrollContrainerView.invalidateIntrinsicContentSize()
+            resizeScroll()
         } else {
             println("company is nil")
             // TODO unset everything?
         }
         
+    }
+    
+    func resizeScroll() {
+        view.layoutIfNeeded()
+        
+        //-- Brute Force It ~ 8x slower to calculate then getting the last time
+        var contentRect = CGRectZero
+        for view in scrollContrainerView.subviews {
+            contentRect = CGRectUnion(contentRect, view.frame)
+        }
+        scrollContainerViewHeight.constant = contentRect.height + 20
+        
+        //-- Get last item ~ Fastest Method?
+//        let localPoint: CGPoint = noOfEmployees.bounds.origin
+//        let basePoint: CGPoint = noOfEmployees.convertPoint(localPoint, fromCoordinateSpace: scrollView)
+//        scrollContainerViewHeight.constant = basePoint.y + noOfEmployees.bounds.height + 20
     }
     
     @IBAction func goBack(sender: UIButton) {
