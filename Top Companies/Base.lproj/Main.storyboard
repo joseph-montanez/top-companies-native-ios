@@ -3,7 +3,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -367,20 +366,16 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0WF-vt-XWk" userLabel="Banner View">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="177273726" translatesAutoresizingMaskIntoConstraints="NO" id="6Jg-oS-An6" userLabel="Banner Image">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="177273726" translatesAutoresizingMaskIntoConstraints="NO" id="6Jg-oS-An6" userLabel="Banner Image">
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
                                                         <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" secondItem="6Jg-oS-An6" secondAttribute="height" multiplier="8:3" id="IvC-v4-Gva"/>
                                                             <constraint firstAttribute="height" constant="120" id="dri-47-Mkh"/>
                                                         </constraints>
                                                     </imageView>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fade" translatesAutoresizingMaskIntoConstraints="NO" id="6Ha-fQ-4Z7">
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
                                                         <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="6Ha-fQ-4Z7" secondAttribute="height" multiplier="8:3" id="uhm-72-GpX"/>
-                                                        </constraints>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -459,6 +454,9 @@
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="qr2-A0-EXz" userLabel="Company Description">
                                                 <rect key="frame" x="20" y="865" width="280" height="56"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" priority="250" constant="56" id="zBu-Ks-unz"/>
+                                                </constraints>
                                                 <string key="text">Digitaria is a full service digital agency made up of visionary online marketing strategists, web technologists and creative website designers from around the world.</string>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                 <color key="textColor" red="0.29803921570000003" green="0.32549019610000002" blue="0.33725490200000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -474,59 +472,68 @@
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Business Information" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SAr-Xz-i2j">
                                                 <rect key="frame" x="66" y="956" width="189" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" priority="250" constant="24" id="GCT-db-r4l"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Year Established:" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axN-WC-BXZ">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Year Established:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axN-WC-BXZ">
                                                 <rect key="frame" x="53" y="988" width="123" height="19"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="123" id="DSC-hb-XOl"/>
+                                                    <constraint firstAttribute="height" priority="250" constant="19" id="Lmu-Ba-8XD"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2014" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2FU-ci-IAh">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2014" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2FU-ci-IAh">
                                                 <rect key="frame" x="184" y="988" width="42" height="19"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="height" priority="250" constant="19" id="3n8-Vb-gsO"/>
                                                     <constraint firstAttribute="width" constant="42" id="zZa-Be-UEd"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Annual Revenue:" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34V-te-9ga">
-                                                <rect key="frame" x="53" y="1015" width="123" height="19"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="123" id="P8j-Hi-cAf"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$2,000,000" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U4t-wZ-Ofe">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$2,000,000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U4t-wZ-Ofe">
                                                 <rect key="frame" x="184" y="1015" width="87" height="19"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="87" id="CrO-2S-zgX"/>
+                                                    <constraint firstAttribute="height" priority="250" constant="19" id="P0F-Wu-pbW"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No. Employees:" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MJE-Ij-co6">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No. Employees:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MJE-Ij-co6">
                                                 <rect key="frame" x="53" y="1042" width="123" height="19"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="123" id="AYq-iA-qhb"/>
+                                                    <constraint firstAttribute="height" priority="250" constant="19" id="LgN-WA-0zO"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200 - 300" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BHy-5A-wsl">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200 - 300" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BHy-5A-wsl">
                                                 <rect key="frame" x="184" y="1042" width="87" height="19"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="87" id="UmH-GW-VMq"/>
+                                                    <constraint firstAttribute="height" priority="250" constant="19" id="g6D-gS-IB3"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Annual Revenue:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34V-te-9ga">
+                                                <rect key="frame" x="53" y="1015" width="123" height="19"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" priority="250" constant="19" id="56j-7V-Dva"/>
+                                                    <constraint firstAttribute="width" constant="123" id="P8j-Hi-cAf"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -546,6 +553,8 @@
                                             <constraint firstItem="2FU-ci-IAh" firstAttribute="leading" secondItem="axN-WC-BXZ" secondAttribute="trailing" constant="8" id="B3m-dL-6dd"/>
                                             <constraint firstItem="0WF-vt-XWk" firstAttribute="leading" secondItem="jxo-kL-NPO" secondAttribute="leading" id="C9u-B0-Mwq"/>
                                             <constraint firstAttribute="height" priority="250" constant="1500" id="DCE-sr-kat"/>
+                                            <constraint firstItem="6Jg-oS-An6" firstAttribute="width" secondItem="jxo-kL-NPO" secondAttribute="width" id="Dr7-PL-qpV"/>
+                                            <constraint firstItem="6Ha-fQ-4Z7" firstAttribute="width" secondItem="jxo-kL-NPO" secondAttribute="width" id="GqX-Y4-lOY"/>
                                             <constraint firstItem="y0m-Jw-OUs" firstAttribute="top" secondItem="gBM-xC-y7M" secondAttribute="bottom" id="ISR-nk-ZDB"/>
                                             <constraint firstItem="JFk-xb-Wa6" firstAttribute="top" secondItem="a4d-Nz-f0W" secondAttribute="bottom" constant="4" id="J07-Be-odP"/>
                                             <constraint firstAttribute="centerX" secondItem="J54-op-tCg" secondAttribute="centerX" id="KIC-Il-Cdg"/>
@@ -611,10 +620,26 @@
                     <size key="freeformSize" width="320" height="1500"/>
                     <connections>
                         <outlet property="address" destination="JFk-xb-Wa6" id="9Bh-Nr-buP"/>
+                        <outlet property="annualRev" destination="U4t-wZ-Ofe" id="9Bs-QB-mkZ"/>
+                        <outlet property="annualRevHeightConstraint" destination="P0F-Wu-pbW" id="rDj-cx-B33"/>
+                        <outlet property="annualRevText" destination="34V-te-9ga" id="feV-Wz-OWL"/>
+                        <outlet property="annualRevTextHeightConstraint" destination="56j-7V-Dva" id="k0F-0n-CPl"/>
+                        <outlet property="annualRevTopConstraint" destination="33W-Pq-XVa" id="GJS-NB-ZwN"/>
                         <outlet property="bannerImage" destination="6Jg-oS-An6" id="Zk4-V2-1Ig"/>
+                        <outlet property="businessText" destination="SAr-Xz-i2j" id="Rej-im-6SB"/>
+                        <outlet property="businessTextHeightConstraint" destination="GCT-db-r4l" id="l2n-Ku-Rqz"/>
+                        <outlet property="businessTextTopConstraint" destination="Abp-kS-9qh" id="V8N-Qz-aqw"/>
                         <outlet property="cityStateZip" destination="YU0-3E-gxz" id="ky5-ds-hK6"/>
                         <outlet property="companyName" destination="a4d-Nz-f0W" id="qHT-0W-ZqQ"/>
-                        <outlet property="noOfEmployees" destination="BHy-5A-wsl" id="660-Zq-WWL"/>
+                        <outlet property="descriptionText" destination="qr2-A0-EXz" id="u6t-5t-23e"/>
+                        <outlet property="descriptionTextBottomConstraint" destination="1k8-Vn-7RX" id="ivS-Lr-fJ2"/>
+                        <outlet property="descriptionTextHeightConstraint" destination="zBu-Ks-unz" id="upG-wh-zdy"/>
+                        <outlet property="descriptionTextTopConstraint" destination="0dN-Sr-y3B" id="0qK-Z8-iPk"/>
+                        <outlet property="employeeNo" destination="BHy-5A-wsl" id="CiY-Kl-OoK"/>
+                        <outlet property="employeeNoHeightConstraint" destination="g6D-gS-IB3" id="A7F-sP-swx"/>
+                        <outlet property="employeeNoText" destination="MJE-Ij-co6" id="bC7-5y-fEA"/>
+                        <outlet property="employeeNoTextHeightConstraint" destination="LgN-WA-0zO" id="0gp-fx-juX"/>
+                        <outlet property="employeeNoTopConstraint" destination="aCd-ak-b39" id="2ye-M7-g0S"/>
                         <outlet property="overviewText" destination="J54-op-tCg" id="GCC-t7-ckP"/>
                         <outlet property="overviewTextBottomConstraint" destination="xVs-Xn-iMW" id="Qja-T5-jc8"/>
                         <outlet property="overviewTextHeightConstraint" destination="Ri9-Wc-xG5" id="1g1-fs-0RY"/>
@@ -628,6 +653,11 @@
                         <outlet property="scrollView" destination="JQk-mQ-Aht" id="23u-QR-bWD"/>
                         <outlet property="subHeader" destination="tKZ-k5-iwh" id="gJm-0r-PaP"/>
                         <outlet property="website" destination="gBM-xC-y7M" id="N8s-iH-9tO"/>
+                        <outlet property="yearEst" destination="2FU-ci-IAh" id="wpa-Yw-wMX"/>
+                        <outlet property="yearEstHeightConstraint" destination="3n8-Vb-gsO" id="OAL-Zn-Tzj"/>
+                        <outlet property="yearEstText" destination="axN-WC-BXZ" id="7PY-Uw-Em5"/>
+                        <outlet property="yearEstTextHeightConstraint" destination="Lmu-Ba-8XD" id="wpA-dt-Fo1"/>
+                        <outlet property="yearEstTopConstraint" destination="Tht-PQ-4VK" id="8T5-GS-mtv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pnM-iW-5iW" userLabel="First Responder" sceneMemberID="firstResponder"/>
